@@ -1,5 +1,5 @@
 
-const restaurantData = [
+const restaurantData = [ 
   { id: 1,
     restaurantName: "The Funky Chicken",
     address: "4, Mermaid Quay, Cardiff CF10 5BZ",

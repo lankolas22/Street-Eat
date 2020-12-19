@@ -6,18 +6,13 @@ function Side() {
   return (
     <aside className="Aside">
       <div className="RestaurantList">
-      {restaurantData.map((Reviews) => {
-          
-console.log(Reviews);
-          return ( 
+        {restaurantData.map((Reviews) => {
+          // console.log(Reviews);
+          return (
             // props
-            <RestaurantItem restaurant = {Reviews}/> 
-               
-          
-            
+            <RestaurantItem restaurant={Reviews} />
           );
         })}
- 
       </div>
     </aside>
   );

@@ -69,10 +69,9 @@ border:solid;
   height: 1000px;
 }
 
-.modal {
+.Modal {
   z-index: 100000;
-  position: absolute;
-  display:block;
+  display: block;  /* block or none */
 }
 
 .ModalItemTitle{

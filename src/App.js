@@ -20,7 +20,7 @@ function App() {
         <Side />
       </div>
     </div>
-  );
+  ); 
 }
 
 export default App;

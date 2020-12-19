@@ -1,30 +1,23 @@
 import React from "react";
+import "./App.css";
 import { restaurantData } from "./Reviews";
 
-function ModalInput() {
+function ModalInput({ restaurant }) {
+  console.log(restaurant);
   return (
-    <div className="restaurantItem">
-      {restaurantData.map((Reviews, id) => {
-        console.log(Reviews);
-        return (
-          <div key={id}>
-            <div className="ModalItemTitle">{Reviews.restaurantName}</div>
-            <div className="reviewsPrint">
-              {Reviews.ratings.map((ratings, ratingID) => {
-                return (
-                  <div key={ratingID}>
-                    <b>{ratings.stars} STAR : </b> {ratings.comment}
-                  </div>
-                );
-              })}
-            </div>
+    <div className="reviewItem" className= {restaurant.ratings.RatingID}>
+      <h2 className="ModalHeader">{restaurant.restaurantName}</h2>
 
-            <hr className="itemDivider"></hr>
-          </div>
-        );
-      })}
+      {restaurant.ratings.map((rating) => (
+    <p key={rating.ratingID}> <img src= {`${rating.stars}.png`} alt="RESTAURANT RATING"></img>{`   ${rating.comment}`}</p>
+  ))}
+
+
     </div>
   );
 }
 
 export default ModalInput;
+
+//change the 4 STAR to show actual stars the number of which is determined by rating.stars and then style the stars
+//maybe five custom same size images would be easier so 

@@ -1,18 +1,20 @@
 import React from "react";
 import ModalInput from "./ModalInput";
-import RestaurantItem from "./RestaurantItem";
+import { restaurantData } from "./Reviews";
 
 function Modal() {
   return (
-    <div className="Modal">
+  <article className="Modal">
       <div className="RestaurantReview">
-          <ModalInput  />
-
-
-
- 
+        {restaurantData.map((Reviews) => {
+          // console.log(Reviews);
+          return (
+            // props
+            <ModalInput  restaurant={Reviews} />
+          );
+        })}
       </div>
-    </div>
+    </article>
   );
 }
 

@@ -2,9 +2,9 @@
 const restaurantData = [ 
   { id: 1,
     restaurantName: "The Funky Chicken",
-    address: "4, Mermaid Quay, Cardiff CF10 5BZ",
-    lat: 48.8737815,
-    long: 2.3501649,
+    address: "4, Adelaide Street, Cardiff CF10 5BS",
+    lat: 51.463649,
+    lng: -3.168304,
     ratings: [
       { ratingID: 1,
         stars: 2,
@@ -34,9 +34,9 @@ const restaurantData = [
 
   { id: 2,
     restaurantName: "K.F.Seafood",
-    address: "2 W Bute St, Cardiff CF10 5EP",
-    lat: 48.8737815,
-    long: 2.3501649,
+    address: "22 Mermaid Quay, Cardiff, CF10 5BZ",
+    lat: 51.463381,
+    lng: -3.165384,
     ratings: [
       { ratingID: 1,
         stars: 2,
@@ -59,9 +59,9 @@ const restaurantData = [
 
   { id: 3,
     restaurantName: "Kevin Vegan",
-    address: "3 Havannah St, Cardiff CF10 5SF",
-    lat: 48.8865035,
-    long: 2.3442197,
+    address: "110 Bute Street, Cardiff CF10 5AJ",
+    lat: 51.465293,
+    lng: -3.165973,
     ratings: [
       { ratingID: 1,
         stars: 4,
@@ -84,9 +84,9 @@ const restaurantData = [
 
   { id: 4,
     restaurantName: "Papa Joans",
-    address: "1 Ferry Road Cardiff Bay Retail Park",
-    lat: 48.8865035,
-    long: 2.3442197,
+    address: "The Red Dragon Centre, Hemingway Rd, Cardiff CF10 4DJ",
+    lat: 51.466326,
+    lng: -3.163536,
     ratings: [
       { ratingID: 1,
         stars: 4,
@@ -110,9 +110,9 @@ const restaurantData = [
 
   { id: 5,
     restaurantName: "Where it all Vegan",
-    address: "1 Hemingway Rd, Cardiff CF10 4JY",
-    lat: 48.8865035,
-    long: 2.3442197,
+    address: "2 Pierhead St, Cardiff, CF10 4QQ",
+    lat: 51.466567,
+    lng: -3.158641,
     ratings: [
       { ratingID: 1,
         stars: 5,
@@ -143,9 +143,9 @@ const restaurantData = [
 
   { id: 6,
     restaurantName: "Pizza Hat",
-    address: "Cardiff CF11 0JP",
-    lat: 48.8865035,
-    long: 2.3442197,
+    address: "Dumballs Road Bottom, Cardiff CF10 5FW",
+    lat: 51.465691,
+    lng: -3.17055,
     ratings: [
       { ratingID: 1,
         stars: 4,

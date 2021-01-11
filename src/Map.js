@@ -5,7 +5,7 @@ import {GoogleApiWrapper} from 'google-maps-react';
 export class MapContainer extends React.Component {}
  
 export default GoogleApiWrapper({
-  apiKey: (AIzaSyBomt46w58cIAe_SG6ANWAOydJRcm0CAeo)
+  apiKey: (API KEY HERE)
 })(MapContainer)
 
 */

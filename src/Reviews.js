@@ -167,3 +167,23 @@ const restaurantData = [
   },
 ];
 export {restaurantData}
+
+// google how to make React call to the api 
+/* 
+
+
+Try to make this call from React code. Basically implement a JS function to make this call and return the restaurants
+
+https://www.newline.co/fullstack-react/articles/how-to-write-a-google-maps-react-component/#
+
+https://developers.google.com/maps/documentation/javascript/places
+
+example
+
+also get it to console .log and see the restaurants  in browser
+
+goal is that there is a javascript object that is holding these objects
+
+console log it
+
+*/

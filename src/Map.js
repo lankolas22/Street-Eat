@@ -1,14 +1,71 @@
-import React from "react";
-import Modal from "./Modal";
+/*import React from "react";
+//import Modal from "./Modal";
+import {GoogleApiWrapper} from 'google-maps-react';
 
-function Map() {
-  return (
-    <main className="Main">
-      <div className="mapBox">
-        <Modal />
-      </div>
-    </main>
-  );
+export class MapContainer extends React.Component {}
+ 
+export default GoogleApiWrapper({
+  apiKey: (AIzaSyBomt46w58cIAe_SG6ANWAOydJRcm0CAeo)
+})(MapContainer)
+
+*/
+
+export class Map extends React.Component {
+  constructor(props) {
+    super(props);
+
+    const {lat, lng} = this.props.initialCenter;
+    this.state = {
+      currentLocation: {
+        lat: lat,
+        lng: lng
+      }
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.google !== this.props.google) {
+      this.loadMap();
+    }
+  }
+
+  loadMap() {
+    if (this.props && this.props.google) {
+      const { google } = this.props;
+      const maps = google.maps;
+      const mapRef = this.refs.map;
+      const node = ReactDOM.findDOMNode(mapRef);
+
+      //let { initialCenter, zoom } = this.props;
+      const {lat, lng} = this.state.currentLocation;
+      const center = new maps.LatLng(lat, lng);
+      const mapConfig = Object.assign(
+        {},
+        {
+          center: center,
+          zoom: zoom,
+        }
+      );
+      this.map = new maps.Map(node, mapConfig);
+      //const { lat, lng } = this.state.currentLocation;
+    }
+  }
+  render() {
+    return <div ref="map">Loading map...</div>;
+  }
 }
 
-export default Map;
+Map.propTypes = {
+  google: React.PropTypes.object,
+  zoom: React.PropTypes.number,
+  initialCenter: React.PropTypes.object,
+};
+Map.defaultProps = {
+  zoom: 13,
+
+  initialCenter: {
+    lat: 51.465931,
+    lng: -3.166773,
+  },
+  centerAroundCurrentLocation: false
+};

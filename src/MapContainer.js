@@ -21,5 +21,5 @@ export class Container extends React.Component {
 }
 
 export default GoogleApiComponent({
-  apiKey: __GAPI_KEY__,
+  apiKey: "AIzaSyBVFKqse6hogr0y7ecgJ9SNYxnOiVowENs",
 })(Container);

@@ -1,25 +1,26 @@
-/*import React from "react";
+import React from "react";
+import ReactDOM from "react-dom";
 //import Modal from "./Modal";
-import {GoogleApiWrapper} from 'google-maps-react';
+import { GoogleApiWrapper } from "google-maps-react";
 
 export class MapContainer extends React.Component {}
- 
+
+/*
 export default GoogleApiWrapper({
   apiKey: (API KEY HERE)
 })(MapContainer)
-
 */
 
 export class Map extends React.Component {
   constructor(props) {
     super(props);
 
-    const {lat, lng} = this.props.initialCenter;
+    const { lat, lng } = this.props.initialCenter;
     this.state = {
       currentLocation: {
         lat: lat,
-        lng: lng
-      }
+        lng: lng,
+      },
     };
   }
 
@@ -36,8 +37,8 @@ export class Map extends React.Component {
       const mapRef = this.refs.map;
       const node = ReactDOM.findDOMNode(mapRef);
 
-      //let { initialCenter, zoom } = this.props;
-      const {lat, lng} = this.state.currentLocation;
+      let { initialCenter, zoom } = this.props;
+      const { lat, lng } = this.state.currentLocation;
       const center = new maps.LatLng(lat, lng);
       const mapConfig = Object.assign(
         {},
@@ -67,5 +68,5 @@ Map.defaultProps = {
     lat: 51.465931,
     lng: -3.166773,
   },
-  centerAroundCurrentLocation: false
+  centerAroundCurrentLocation: false,
 };

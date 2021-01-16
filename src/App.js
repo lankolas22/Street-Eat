@@ -1,6 +1,6 @@
 import logo from "./logo.png";
 import "./App.css";
-import Map from "./Map";
+import {Map} from "./Map";
 import Side from "./Side";
 
 

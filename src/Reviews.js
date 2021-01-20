@@ -176,6 +176,12 @@ Try to make this call from React code. Basically implement a JS function to make
 
 https://www.newline.co/fullstack-react/articles/how-to-write-a-google-maps-react-component/#
 
+in the above article, google api Component link (install via npm etc, makes it easier than dealing with canvas 
+
+
+https://www.newline.co/fullstack-react/articles/how-to-write-a-google-maps-react-component/#
+
+
 https://developers.google.com/maps/documentation/javascript/places
 
 example

@@ -1,9 +1,10 @@
 import React from "react";
-import Map from "./Map";
+import { Map } from "./Map";
 //import Modal from "./Modal";
-import { GoogleApiWrapper } from "google-maps-react";
+//import { GoogleApiWrapper } from "google-maps-react";
 
-export class Container extends React.Component {
+
+export class MapContainer extends React.Component {
   render() {
     if (!this.props.loaded) {
       return <div>Loading...</div>;
@@ -18,8 +19,7 @@ export class Container extends React.Component {
       </div>
     );
   }
-}
-
-export default GoogleApiComponent({
-  apiKey: ftftftftf,
+}  
+export default GoogleApiWrapper({
+  apiKey: "API KEY",
 })(Container);

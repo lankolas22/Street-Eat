@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 //import Modal from "./Modal";
-import { GoogleApiWrapper } from "google-maps-react";
+/*import { GoogleApiWrapper } from "google-maps-react";
 
 export class MapContainer extends React.Component {}
 

@@ -1,6 +1,6 @@
 import logo from "./logo.png";
 import "./App.css";
-import { MapContainer } from "./MapContainer";
+import MapContainer from "./MapContainer";
 import Side from "./Side";
 
 
@@ -16,7 +16,7 @@ function App() {
         <p className="TagLine">Word on the Street for where to Eat</p>
       </header>
       <div className="container">
-    
+        <MapContainer />
         <Side />
       </div>
     </div>

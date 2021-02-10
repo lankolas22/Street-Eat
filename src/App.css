@@ -71,7 +71,7 @@ border:solid;
 
 .Modal {
   z-index: 100000;
-  display: none;  /* block or none */
+  display: none; 
 }
 
 .ModalItemTitle{
@@ -96,7 +96,7 @@ border:solid;
 
 .Aside {
   float: right;
-  width: 30%;
+  width: 35%;
   background-color: skyblue;
 }
 
@@ -125,5 +125,7 @@ li {
   display: inline;
 }
 
+.container {
+  display:flex;
+}
 
-/*  update test !!! */

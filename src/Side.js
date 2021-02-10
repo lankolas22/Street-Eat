@@ -4,7 +4,7 @@ import { restaurantData } from "./Reviews";
 
 function Side() {
   return (
-    <aside className="Aside">
+    <div className="Aside">
       <div className="RestaurantList">
         {restaurantData.map((Reviews) => {
           // console.log(Reviews);
@@ -14,7 +14,7 @@ function Side() {
           );
         })}
       </div>
-    </aside>
+    </div>
   );
 }
 

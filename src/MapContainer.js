@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
-/*<script defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl7rJskwTxg3fIJ3wKhN_KT0emk1LlcI0
-    &libraries=places&callback=initMap"></script>  
-*/
 
 const containerStyle = {
   width: "65%",
@@ -14,6 +10,10 @@ const center = {
   lat: 51.466, 
   lng: -3.167 
 };
+
+//solution suggested below as it was undefined
+
+const google = window.google;
 
 //@ put inside a function
 
@@ -56,7 +56,7 @@ const abc = ()=> {
 
 var map;
 var service;
-var infowindow;
+//var infowindow;
 
 function initialize() {
   //var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
@@ -84,6 +84,32 @@ function callback(results, status) {
   }
 }
 /*
+function createMarker(places, map) {
+  const bounds = new google.maps.LatLngBounds();
+  const placesList = document.getElementById("places");
+
+  for (let i = 0, place; (place = places[i]); i++) {
+    const image = {
+      url: place.icon,
+      size: new google.maps.Size(71, 71),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 34),
+      scaledSize: new google.maps.Size(25, 25),
+    };
+    new google.maps.Marker({
+      map,
+      icon: image,
+      title: place.name,
+      position: place.geometry.location,
+    });
+    const li = document.createElement("li");
+    li.textContent = place.name;
+    placesList.appendChild(li);
+    bounds.extend(place.geometry.location);
+  }
+  map.fitBounds(bounds);
+}
+
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 

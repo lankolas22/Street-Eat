@@ -6,12 +6,6 @@ import Side from "./Side";
 function App() {
   return (
     <div className="App">
-      <script
-        defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl7rJskwTxg3fIJ3wKhN_KT0emk1LlcI0
-    &libraries=places&callback=initMap"
-      ></script>
-
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="MainLogoText">

@@ -6,14 +6,13 @@ const containerStyle = {
   width: "65%",
   height: "625px",
 };
-const center = { 
-  lat: 51.466, 
-  lng: -3.167 
-};
+// const center = { 
+//   lat: 51.466, 
+//   lng: -3.167 
+// };
 
 //solution suggested below as it was undefined
 
-const google = window.google;
 
 //@ put inside a function
 
@@ -55,47 +54,9 @@ const abc = ()=> {
 */
 
 
-let map;
 let service;
 let infowindow;
 
-function initialize() {
-  //var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
-
-  map = new google.maps.Map(document.getElementById('map'), {
-      center: center,
-      zoom: 15
-    });
-
-  let request = {
-    location: center,
-    radius: '500',
-    type: ['restaurant']
-  };
-
-  service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, callback);
-}
-
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (let i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
-  }
-}
-
-function createMarker(place) {
-  if (!place.geometry || !place.geometry.location) return;
-  const marker = new google.maps.Marker({
-    map,
-    position: place.geometry.location,
-  });
-  google.maps.event.addListener(marker, "click", () => {
-    infowindow.setContent(place.name || "");
-    infowindow.open(map);
-  });
-}
 /*
 function createMarker(places, map) {
   const bounds = new google.maps.LatLngBounds();
@@ -148,21 +109,59 @@ implement new code to replace abc and inc NEW key
 */
 
 function MapContainer() {
-  const [center, setCenter] = useState(0);
+  const [center, setCenter] = useState(null);
+  const [ mapState, setMapState ] = useState(null);
+
   useEffect(() => {
     getLocation();
   }, []);
-  // pass an empty array to stop infinite loop
-
-  //anything thats starts with use is a hook
 
   useEffect(() => {
     initialize();
-  }, []);
+  }, [mapState, center]);
+  
+  function initialize() {
+    //var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
 
-  //@ try and figure it out  based on this above solution using console logs
+    console.log('center', center);
+    if (!mapState || !center) {
+      return;
+    }
+    const place = new window.google.maps.LatLng(center.lat,center.lng); 
+
+    let request = {
+      location: place,
+      radius: '500',
+      type: ['restaurant']
+    };
+  
+    service = new window.google.maps.places.PlacesService(mapState);
+    service.nearbySearch(request, callback);
+  }
+  
+  function callback(results, status) {
+    console.log('calling back with results, status', results, status)
+    if (status == window.google.maps.places.PlacesServiceStatus.OK) {
+      for (let i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+      }
+    }
+  }
+  
+  function createMarker(place) {
+    if (!place.geometry || !place.geometry.location) return;
+    const marker = new window.google.maps.Marker({
+      mapState,
+      position: place.geometry.location,
+    });
+    window.google.maps.event.addListener(marker, "click", () => {
+      infowindow.setContent(place.name || "");
+      infowindow.open(mapState);
+    });
+  }
 
   function getLocation() {
+    console.log('navigator.geolocation', navigator.geolocation);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -171,27 +170,38 @@ function MapContainer() {
   }
 
   function showPosition(position) {
-    console.log(position);
+    console.log('setting center')
     setCenter({
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     });
   }
 
+  if (window.google === undefined) {
+    return null;
+  }
+
+  const onMapLoad = ( (map) => {
+		setMapState(map);
+	}); 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyBVFKqse6hogr0y7ecgJ9SNYxnOiVowENs">
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={14.5}>
-        {/* Child components, such as markers, info windows, etc. */}
+    <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={14.5} onLoad={onMapLoad}>
+      {/* Child components, such as markers, info windows, etc. */}
 
-        <Marker onLoad={(marker: Marker) => {}} position={center} />
+      <Marker onLoad={(marker) => {}} position={center} />
 
-        <></>
-      </GoogleMap>
-    </LoadScript>
+      <></>
+    </GoogleMap>
   );
 }
 
 export default React.memo(MapContainer);
+
+// const MyMap = ({center}) => {
+//   return (
+    
+//   )
+// }
 
 /*
 

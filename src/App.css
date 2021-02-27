@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  scroll-behavior: smooth;
 }
 
 .App-logo {
@@ -9,7 +10,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 15s linear;
+    animation: App-logo-spin infinite 14s linear;
   }
 }
 
@@ -40,6 +41,7 @@
 .TagLine {
   font-family: "Josefin Slab", serif;
   font-size: 1.4em;
+  margin-bottom:0.4em;
 }
 
 .MainLogoText {
@@ -47,6 +49,7 @@
   font-weight: normal;
   color: cornsilk;
   text-shadow: 2px 2px #ff0000b0;
+  margin-bottom:0.2em;
 }
 
 .RestaurantList {/* 
@@ -103,6 +106,8 @@ border:solid;
 .AsideAddress {
   font-family: 'Josefin Slab', serif;
   }
+
+
 
 /*
 .AsideHeader {

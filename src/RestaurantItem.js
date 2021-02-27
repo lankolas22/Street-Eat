@@ -1,6 +1,10 @@
 import React from "react";
 import "./App.css";
+import MapContainer from "./MapContainer";
 import { restaurantData } from "./Reviews"; 
+import {results} from "./MapContainer";
+
+//console.log(results);
 
 function RestaurantItem({ restaurant }) {
   return (

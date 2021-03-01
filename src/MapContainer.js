@@ -7,8 +7,9 @@ const containerStyle = {
 };
 let service;
 let infowindow;
+/////////////////////////////////////////////////////
 let results;
-
+////////////////////////////////////////////////////
 function MapContainer() {
   console.log("MapContainer function");
   const [center, setCenter] = useState(null);
@@ -58,7 +59,6 @@ function MapContainer() {
 
     setResults(results);
 
-
     ///////////////////////////////////////////////
     if (status == window.google.maps.places.PlacesServiceStatus.OK) {
       for (let i = 0; i < results.length; i++) {
@@ -66,18 +66,17 @@ function MapContainer() {
       }
     }
     //console.log(results);
-    
   }
   ///////////////////////////////////////////////
   function getResults() {
     console.log("getResults function");
 
-    if (!{results}) {
-      console.log("getResutls() failed")
+    if (!{ results } || results == undefined) {
+      console.log("getResutls() failed");
       return;
     }
-    console.log("getResutls() success")
-    console.log({results});
+    console.log("getResutls() success");
+    console.log({ results });
   }
 
   ///////////////////////////////////////////////

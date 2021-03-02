@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import logo from "./logo.png";
 import CallToAction from "./ctaButton.png";
 import "./App.css";
@@ -5,6 +6,7 @@ import MapContainer from "./MapContainer";
 import Side from "./Side";
 
 function App() {
+  const [restaurants, setRestaurants] = useState([]); 
   return (
     <div className="App">
       <header className="App-header">
@@ -16,12 +18,12 @@ function App() {
         
       </header>
       <div className="container">
-        <MapContainer />
-        <Side />
+        <MapContainer setRestaurants={setRestaurants}/>
+        <Side restaurants={restaurants} />
       </div>
       
     </div>
   );
 }
-
+//{console.log(restaurants)}
 export default App;

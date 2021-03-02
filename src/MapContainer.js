@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { restaurantData } from "./Reviews";
+//import setRestaurants from "./App";
 
 const containerStyle = {
   width: "65%",
@@ -8,13 +10,10 @@ const containerStyle = {
 let service;
 let infowindow;
 /////////////////////////////////////////////////////
-let results;
-////////////////////////////////////////////////////
 function MapContainer() {
   console.log("MapContainer function");
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);
-  ///////////////////////////////////////////////////
   const [results, setResults] = useState(null);
   ///////////////////////////////////////////////////
   useEffect(() => {
@@ -24,12 +23,10 @@ function MapContainer() {
   useEffect(() => {
     initialize();
   }, [mapState, center]);
-  //////////////////////////////////////////////////
 
   useEffect(() => {
     getResults();
   }, [results]);
-
   /////////////////////////////////////////////////
   function initialize() {
     console.log("initialize function");
@@ -50,22 +47,21 @@ function MapContainer() {
     service = new window.google.maps.places.PlacesService(mapState);
     service.nearbySearch(request, callback);
   }
-
+  ///////////////////////////////////////////////
   function callback(results, status) {
     console.log("callback function");
     console.log(typeof results);
     console.log("calling back with results, status", results, status);
-    ///////////////////////////////////////////////
 
     setResults(results);
 
-    ///////////////////////////////////////////////
+    //setRestaurants(results);
+    
     if (status == window.google.maps.places.PlacesServiceStatus.OK) {
       for (let i = 0; i < results.length; i++) {
         createMarker(results[i]);
       }
     }
-    //console.log(results);
   }
   ///////////////////////////////////////////////
   function getResults() {
@@ -94,6 +90,7 @@ function MapContainer() {
       infowindow.open(mapState);
     });
   }
+  ///////////////////////////////////////////////
   function getLocation() {
     console.log("getLocation function");
     console.log("navigator.geolocation", navigator.geolocation);
@@ -102,9 +99,8 @@ function MapContainer() {
     } else {
       alert("Geolocation is not supported by this browser.");
     }
-    //console.log("navigator.geolocation", navigator.geolocation);
   }
-
+  ///////////////////////////////////////////////
   function showPosition(position) {
     console.log("showPosition function");
     console.log("setting center");
@@ -128,8 +124,14 @@ function MapContainer() {
       zoom={14.5}
       onLoad={onMapLoad}
     >
-      {/* Child components, such as markers, info windows, etc. */}
-      <Marker onLoad={(marker) => {}} position={center} />
+      {/* Marker for the user */}
+      <Marker
+        onLoad={(marker) => {}}
+        position={center}
+        icon={"http://maps.google.com/mapfiles/kml/paddle/red-stars.png"}
+      />
+
+      {/* the markers for the real restaurants */}
       {results &&
         results.map((result) => (
           <Marker
@@ -137,9 +139,21 @@ function MapContainer() {
               lat: result.geometry.location.lat(),
               lng: result.geometry.location.lng(),
             }}
-            icon ={"http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"}
+            icon={"http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"}
           />
         ))}
+      {/* the markers for the dummy restaurants */}
+      {restaurantData &&
+        restaurantData.map((result) => (
+          <Marker
+            position={{
+              lat: result.lat,
+              lng: result.lng,
+            }}
+            icon={"http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"}
+          />
+        ))}
+
       <></>
     </GoogleMap>
   );

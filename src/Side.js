@@ -6,6 +6,7 @@ import { restaurantData } from "./Reviews";
 function Side() {
 
   return (
+    
     <div className="Aside">
       <div className="RestaurantList">
         {restaurantData.map((Reviews) => {

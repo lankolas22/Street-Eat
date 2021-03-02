@@ -7,6 +7,13 @@ import Side from "./Side";
 
 function App() {
   const [restaurants, setRestaurants] = useState([]); 
+  useEffect(() => {
+    getRestaurants();
+  }, [restaurants]);
+  function getRestaurants(){
+    console.log("restaurants:")
+    console.log(restaurants)
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -25,5 +32,7 @@ function App() {
     </div>
   );
 }
-//{console.log(restaurants)}
+
+
 export default App;
+

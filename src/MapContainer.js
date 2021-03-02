@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { restaurantData } from "./Reviews";
+//import burgerMarker from "./marker.png";
 //import setRestaurants from "./App";
 
 const containerStyle = {
@@ -10,7 +11,7 @@ const containerStyle = {
 let service;
 let infowindow;
 /////////////////////////////////////////////////////
-function MapContainer() {
+function MapContainer({setRestaurants}) {
   console.log("MapContainer function");
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);
@@ -54,8 +55,7 @@ function MapContainer() {
     console.log("calling back with results, status", results, status);
 
     setResults(results);
-
-    //setRestaurants(results);
+    setRestaurants(results);
     
     if (status == window.google.maps.places.PlacesServiceStatus.OK) {
       for (let i = 0; i < results.length; i++) {
@@ -121,7 +121,7 @@ function MapContainer() {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={14.5}
+      zoom={16}
       onLoad={onMapLoad}
     >
       {/* Marker for the user */}

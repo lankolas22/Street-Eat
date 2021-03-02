@@ -41,7 +41,7 @@
 .TagLine {
   font-family: "Josefin Slab", serif;
   font-size: 1.4em;
-  margin-bottom:0.4em;
+  margin-bottom: 0.4em;
 }
 
 .MainLogoText {
@@ -49,21 +49,22 @@
   font-weight: normal;
   color: cornsilk;
   text-shadow: 2px 2px #ff0000b0;
-  margin-bottom:0.2em;
+  margin-bottom: 0.2em;
 }
 
-.RestaurantList {/* 
+.RestaurantList {
+  /* 
 font-family: 'Josefin Slab', serif;
 font-family: 'Montserrat', sans-serif;
 font-family: 'Lobster', cursive;
 font-family: 'Monoton', cursive; */
-font-family: 'Lobster', cursive;
-font-size: 1.2em;;
+  font-family: "Lobster", cursive;
+  font-size: 1.2em;
 
 }
 
 .restaurantItem {
-border:solid;
+  border: solid;
 }
 
 .mapBox {
@@ -74,18 +75,17 @@ border:solid;
 
 .Modal {
   z-index: 100000;
-  display: none; 
+  display: none;
 }
 
-.ModalItemTitle{
-  font-family: 'Monoton', cursive;
+.ModalItemTitle {
+  font-family: "Monoton", cursive;
   font-size: 1.8rem;
   font-weight: bolder;
 }
 
 .itemDivider {
-
-  width:75%;
+  width: 75%;
   border: 3px solid green;
   border-radius: 3px;
 }
@@ -101,13 +101,14 @@ border:solid;
   float: right;
   width: 35%;
   background-color: skyblue;
+  width: 35%;
+  height: 625px;
+  overflow: scroll;
 }
 
 .AsideAddress {
-  font-family: 'Josefin Slab', serif;
-  }
-
-
+  font-family: "Josefin Slab", serif;
+}
 
 /*
 .AsideHeader {
@@ -131,6 +132,5 @@ li {
 }
 
 .container {
-  display:flex;
+  display: flex;
 }
-

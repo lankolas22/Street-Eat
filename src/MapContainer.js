@@ -15,7 +15,7 @@ function MapContainer() {
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);
   ///////////////////////////////////////////////////
-  const [callbackState, setResults] = useState(null);
+  const [results, setResults] = useState(null);
   ///////////////////////////////////////////////////
   useEffect(() => {
     getLocation();
@@ -28,7 +28,7 @@ function MapContainer() {
 
   useEffect(() => {
     getResults();
-  }, [callbackState, results]);
+  }, [results]);
 
   /////////////////////////////////////////////////
   function initialize() {
@@ -71,12 +71,12 @@ function MapContainer() {
   function getResults() {
     console.log("getResults function");
 
-    if (!{ results } || results == undefined) {
+    if (!{ results }) {
       console.log("getResutls() failed");
       return;
     }
     console.log("getResutls() success");
-    console.log({ results });
+    console.log({ results});
   }
 
   ///////////////////////////////////////////////

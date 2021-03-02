@@ -1,9 +1,14 @@
 import React from "react";
 import RestaurantItem from "./RestaurantItem";
 import { restaurantData } from "./Reviews";
-//import { restaurants } from "./MapContainer";
+import {getRestaurants} from "./App";
 
 function Side() {
+  /*
+  function getRestaurants(){
+    console.log("restaurants:")
+    console.log(restaurants)
+  } */
   return (
     <div className="Aside">
       <div className="RestaurantList">

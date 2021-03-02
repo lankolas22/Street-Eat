@@ -12,6 +12,7 @@ let service;
 let infowindow;
 /////////////////////////////////////////////////////
 function MapContainer({setRestaurants}) {
+
   console.log("MapContainer function");
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);

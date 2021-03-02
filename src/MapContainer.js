@@ -76,7 +76,7 @@ function MapContainer() {
       return;
     }
     console.log("getResutls() success");
-    console.log({ results});
+    console.log({ results });
   }
 
   ///////////////////////////////////////////////
@@ -130,6 +130,16 @@ function MapContainer() {
     >
       {/* Child components, such as markers, info windows, etc. */}
       <Marker onLoad={(marker) => {}} position={center} />
+      {results &&
+        results.map((result) => (
+          <Marker
+            position={{
+              lat: result.geometry.location.lat(),
+              lng: result.geometry.location.lng(),
+            }}
+            icon ={"http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"}
+          />
+        ))}
       <></>
     </GoogleMap>
   );

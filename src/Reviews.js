@@ -1,8 +1,8 @@
 
 const restaurantData = [ 
   { id: 1,
-    restaurantName: "The Funky Chicken",
-    address: "4, Adelaide Street, Cardiff CF10 5BS",
+    name: "The Funky Chicken",
+    vicinity: "4, Adelaide Street, Cardiff CF10 5BS",
     lat: 51.463649,
     lng: -3.168304,
     ratings: [
@@ -33,8 +33,8 @@ const restaurantData = [
   },
 
   { id: 2,
-    restaurantName: "K.F.Seafood",
-    address: "22 Mermaid Quay, Cardiff, CF10 5BZ",
+    name: "K.F.Seafood",
+    vicinity: "22 Mermaid Quay, Cardiff, CF10 5BZ",
     lat: 51.463381,
     lng: -3.165384,
     ratings: [
@@ -58,8 +58,8 @@ const restaurantData = [
   },
 
   { id: 3,
-    restaurantName: "Kevin Vegan",
-    address: "110 Bute Street, Cardiff CF10 5AJ",
+    name: "Kevin Vegan",
+    vicinity: "110 Bute Street, Cardiff CF10 5AJ",
     lat: 51.465293,
     lng: -3.165973,
     ratings: [
@@ -84,8 +84,8 @@ const restaurantData = [
 
 
   { id: 4,
-    restaurantName: "Where it all Vegan",
-    address: "2 Pierhead St, Cardiff, CF10 4QQ",
+    name: "Where it all Vegan",
+    vicinity: "2 Pierhead St, Cardiff, CF10 4QQ",
     lat: 51.466567,
     lng: -3.158641,
     ratings: [
@@ -117,8 +117,8 @@ const restaurantData = [
   },
 
   { id: 5,
-    restaurantName: "Pizza Hat",
-    address: "Dumballs Road Bottom, Cardiff CF10 5FW",
+    name: "Pizza Hat",
+    vicinity: "Dumballs Road Bottom, Cardiff CF10 5FW",
     lat: 51.465691,
     lng: -3.17055,
     ratings: [

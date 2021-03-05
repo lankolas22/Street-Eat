@@ -1,14 +1,11 @@
 import React from "react";
 import RestaurantItem from "./RestaurantItem";
 import { restaurantData } from "./Reviews";
-import {getRestaurants} from "./App";
 
-function Side() {
-  /*
-  function getRestaurants(){
-    console.log("restaurants:")
-    console.log(restaurants)
-  } */
+
+function Side({ restaurants }) {
+  console.log("side restaurants", restaurants);
+
   return (
     <div className="Aside">
       <div className="RestaurantList">
@@ -19,6 +16,7 @@ function Side() {
             <RestaurantItem restaurant={Reviews} />
           );
         })}
+
         {restaurants.map((restaurants) => {
           return (
             // props
@@ -29,15 +27,19 @@ function Side() {
     </div>
   );
 }
-//console.log({restaurants});
+
 export default Side;
 
 /*
 
-                 {Array.map((restaurants) => {
+
+
+        {restaurants.map((restaurants) => {
           return (
             // props
             <RestaurantItem restaurant={restaurants} />
           );
         })}
+
+
 */

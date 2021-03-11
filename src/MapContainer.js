@@ -13,7 +13,7 @@ let infowindow;
 /////////////////////////////////////////////////////
 function MapContainer({setRestaurants}) {
 
-  console.log("MapContainer function");
+  //console.log("MapContainer function");
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);
   const [results, setResults] = useState(null);
@@ -31,14 +31,14 @@ function MapContainer({setRestaurants}) {
   }, [results]);
   /////////////////////////////////////////////////
   function initialize() {
-    console.log("initialize function");
-    console.log("center", center);
+    //console.log("initialize function");
+    //console.log("center", center);
     if (!mapState || !center) {
       return;
     }
 
     const place = new window.google.maps.LatLng(center.lat, center.lng);
-    console.log("after center is set");
+    //console.log("after center is set");
 
     let request = {
       location: place,
@@ -51,9 +51,9 @@ function MapContainer({setRestaurants}) {
   }
   ///////////////////////////////////////////////
   function callback(results, status) {
-    console.log("callback function");
-    console.log(typeof results);
-    console.log("calling back with results, status", results, status);
+    //console.log("callback function");
+    //console.log(typeof results);
+    //console.log("calling back with results, status", results, status);
 
     setResults(results);
     setRestaurants(results);
@@ -66,20 +66,20 @@ function MapContainer({setRestaurants}) {
   }
   ///////////////////////////////////////////////
   function getResults() {
-    console.log("getResults function");
+    //console.log("getResults function");
 
     if (!{ results }) {
       console.log("getResutls() failed");
       return;
     }
     console.log("getResutls() success");
-    console.log({ results });
+    //console.log({ results });
   }
 
   ///////////////////////////////////////////////
 
   function createMarker(place) {
-    console.log("createMarker function");
+    //console.log("createMarker function");
     if (!place.geometry || !place.geometry.location) return;
 
     const marker = new window.google.maps.Marker({
@@ -93,8 +93,8 @@ function MapContainer({setRestaurants}) {
   }
   ///////////////////////////////////////////////
   function getLocation() {
-    console.log("getLocation function");
-    console.log("navigator.geolocation", navigator.geolocation);
+    //console.log("getLocation function");
+    //console.log("navigator.geolocation", navigator.geolocation);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -103,8 +103,8 @@ function MapContainer({setRestaurants}) {
   }
   ///////////////////////////////////////////////
   function showPosition(position) {
-    console.log("showPosition function");
-    console.log("setting center");
+    //console.log("showPosition function");
+    //console.log("setting center");
     setCenter({
       lat: position.coords.latitude,
       lng: position.coords.longitude,
@@ -117,7 +117,7 @@ function MapContainer({setRestaurants}) {
   const onMapLoad = (map) => {
     setMapState(map);
   };
-  console.log("map is loading");
+  //console.log("map is loading");
   return (
     <GoogleMap
       mapContainerStyle={containerStyle}

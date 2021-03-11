@@ -1,8 +1,15 @@
 
+import kFSeafood from "./kFSeafood.png";
+import kevinVegan from "./kevinVegan.png";
+import whereItAllVegan from "./whereItAllVegan.png";
+import theFunkyChicken from "./theFunkyChicken.png";
+import pizzaHat from "./pizzaHat.png";
+
 const restaurantData = [ 
-  { id: 1,
+  { place_id: 1,
     name: "The Funky Chicken",
     vicinity: "4, Adelaide Street, Cardiff CF10 5BS",
+    image: theFunkyChicken,
     lat: 51.463649,
     lng: -3.168304,
     ratings: [
@@ -32,9 +39,10 @@ const restaurantData = [
     ],
   },
 
-  { id: 2,
+  { place_id: 2,
     name: "K.F.Seafood",
     vicinity: "22 Mermaid Quay, Cardiff, CF10 5BZ",
+    image: kFSeafood,
     lat: 51.463381,
     lng: -3.165384,
     ratings: [
@@ -57,9 +65,10 @@ const restaurantData = [
     ],
   },
 
-  { id: 3,
+  { place_id: 3,
     name: "Kevin Vegan",
     vicinity: "110 Bute Street, Cardiff CF10 5AJ",
+    image: kevinVegan,
     lat: 51.465293,
     lng: -3.165973,
     ratings: [
@@ -83,9 +92,10 @@ const restaurantData = [
   },
 
 
-  { id: 4,
+  { place_id: 4,
     name: "Where it all Vegan",
     vicinity: "2 Pierhead St, Cardiff, CF10 4QQ",
+    image: whereItAllVegan,
     lat: 51.466567,
     lng: -3.158641,
     ratings: [
@@ -116,9 +126,10 @@ const restaurantData = [
     ],
   },
 
-  { id: 5,
+  { place_id: 5,
     name: "Pizza Hat",
     vicinity: "Dumballs Road Bottom, Cardiff CF10 5FW",
+    image: pizzaHat,
     lat: 51.465691,
     lng: -3.17055,
     ratings: [
@@ -143,28 +154,3 @@ const restaurantData = [
 ];
 export {restaurantData}
 
-// google how to make React call to the api 
-/* 
-
-
-Try to make this call from React code. Basically implement a JS function to make this call and return the restaurants
-
-https://www.newline.co/fullstack-react/articles/how-to-write-a-google-maps-react-component/#
-
-in the above article, google api Component link (install via npm etc, makes it easier than dealing with canvas 
-
-
-https://www.newline.co/fullstack-react/articles/how-to-write-a-google-maps-react-component/#
-
-
-https://developers.google.com/maps/documentation/javascript/places
-
-example
-
-also get it to console .log and see the restaurants  in browser
-
-goal is that there is a javascript object that is holding these objects
-
-console log it
-
-*/

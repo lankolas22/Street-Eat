@@ -4,13 +4,17 @@ import { restaurantData } from "./Reviews";
 
 function Modal() {
   return (
-  <article className="Modal">
+    <article className="Modal">
+      <div className="modalPadding"></div>
+      <div className="modalClose">
+        X
+      </div>
       <div className="RestaurantReview">
         {restaurantData.map((Reviews) => {
           // console.log(Reviews);
           return (
             // props
-            <ModalInput  restaurant={Reviews} />
+            <ModalInput restaurant={Reviews} />
           );
         })}
       </div>

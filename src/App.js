@@ -4,9 +4,19 @@ import CallToAction from "./ctaButton.png";
 import "./App.css";
 import MapContainer from "./MapContainer";
 import Side from "./Side";
+import Modal from "./Modal";
 
 function App() {
   const [restaurants, setRestaurants] = useState([]); 
+ // const [modalState, setModalState] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  
+
+  function ModalCallback (setSelectedRestaurant){
+   
+  
+
+  }
 
   return (
     <div className="App">
@@ -20,7 +30,8 @@ function App() {
       </header>
       <div className="container">
         <MapContainer setRestaurants={setRestaurants}/>
-        <Side restaurants={restaurants} />
+        <Side restaurants={restaurants} setSelectedRestaurant= {setSelectedRestaurant}/>
+        <Modal restaurants={restaurants} />
       </div>
       
     </div>

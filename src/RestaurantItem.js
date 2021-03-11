@@ -4,13 +4,17 @@ import "./App.css";
 
 //console.log(results);
 
-function RestaurantItem({ restaurant }) {
-function modalFunction(){
-  console.log(restaurant.name, " was clicked")
+function RestaurantItem({ restaurant , setSelectedRestaurant}) {
+function onClick(){
+  console.log(restaurant.name, " was clicked");
+  setSelectedRestaurant(restaurant.name);
+
+
+  
 }
   return (
 
-    <div className="restaurantItem" onClick={modalFunction} id={restaurant.id}>
+    <div className="restaurantItem" onClick={onClick} id={restaurant.place_id}>
       <h2 className="AsideHeader">{restaurant.name}</h2>
 
       {"\n"}
@@ -20,24 +24,9 @@ function modalFunction(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   );
 }
 
 export default RestaurantItem;
+
+//onClick={setModalState()=>setModalState(true)}

@@ -3,8 +3,9 @@ import RestaurantItem from "./RestaurantItem";
 import { restaurantData } from "./Reviews";
 
 
-function Side({ restaurants }) {
+function Side({restaurants , setSelectedRestaurant}) {
   console.log("side restaurants", restaurants);
+  console.log("side modal state", setSelectedRestaurant);
 
   return (
     <div className="Aside">
@@ -13,14 +14,14 @@ function Side({ restaurants }) {
           // console.log(Reviews);
           return (
             // props
-            <RestaurantItem restaurant={Reviews} />
+            <RestaurantItem restaurant={Reviews} setSelectedRestaurant = {setSelectedRestaurant}/>
           );
         })}
 
         {restaurants.map((restaurants) => {
           return (
             // props
-            <RestaurantItem restaurant={restaurants} />
+            <RestaurantItem restaurant={restaurants} setSelectedRestaurant = {setSelectedRestaurant}/>
           );
         })}
       </div>

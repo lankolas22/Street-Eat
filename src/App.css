@@ -63,6 +63,30 @@ font-family: 'Monoton', cursive; */
 
 }
 
+.RestaurantReview, .modalPadding { 
+  
+  width:75%;
+  margin: 0 auto;
+  background-color:cornsilk;
+}
+
+.RestaurantReview {height:75%;}
+
+.modalClose {
+
+  width:5%;
+  margin:10px;
+  float:right;
+  border-radius: 4px;
+  background-color: red;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.modalImage {
+height:200px;
+padding:5px;
+}
+
 .restaurantItem {
   border: solid;
 }
@@ -75,7 +99,12 @@ font-family: 'Monoton', cursive; */
 
 .Modal {
   z-index: 100000;
-  display: none;
+  display:block;
+
+}
+
+.ModalHeader {
+  margin:10px;
 }
 
 .ModalItemTitle {
@@ -83,6 +112,11 @@ font-family: 'Monoton', cursive; */
   font-size: 1.8rem;
   font-weight: bolder;
 }
+
+hr {
+  border-radius: 5px;
+  border: 2px solid;
+};
 
 .itemDivider {
   width: 75%;

@@ -6,13 +6,12 @@ import two from "./2.png";
 import three from "./3.png";
 import four from "./4.png";
 import five from "./5.png";
-import kFSeafood from "./kFSeafood.png";
-import kevinVegan from "./kevinVegan.png";
-import whereItAllVegan from "./whereItAllVegan.png";
-import theFunkyChicken from "./theFunkyChicken.png";
-import pizzaHat from "./pizzaHat.png";
 
-function ModalInput( {restaurant} ) {
+
+function ModalInput( {restaurant, selectedRestaurant} ) {
+  console.log("passed down", selectedRestaurant);
+  //   passes down state of null or clicked restaurant
+
   //console.log("modal restaurants", restaurant);
 
   ///////////////////////////////////////////
@@ -35,9 +34,9 @@ function ModalInput( {restaurant} ) {
 */
 
 
-  
+  console.log(restaurant);
 /////////////////////////////////////////////
-
+if (selectedRestaurant!==null) {
   return (
     
     <div className="reviewItem" className={restaurant.ratings.RatingID}>
@@ -52,7 +51,7 @@ function ModalInput( {restaurant} ) {
         <p key={rating.ratingID}>
           {" "}
          
-          <span className="ratingsImage">{`${rating.stars}` + " stars"}</span>{": "}
+          <span className="ratingsImage">{`${rating.rating}` + " stars"}</span>{": "}
            
           {`${rating.comment}`}
         </p>
@@ -61,6 +60,8 @@ function ModalInput( {restaurant} ) {
       <hr />
     </div>
   );
+}
+else{return null}
 }
 //let ratingSrc = document.getElementsByClassName("ratingPic").src;
 //console.log(ratingSrc);

@@ -9,14 +9,10 @@ import Modal from "./Modal";
 function App() {
   const [restaurants, setRestaurants] = useState([]); 
  // const [modalState, setModalState] = useState(false);
+
+ //    [    current state  , function how to change state ] = initial state
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   
-
-  function ModalCallback (setSelectedRestaurant){
-   
-  
-
-  }
 
   return (
     <div className="App">
@@ -31,7 +27,7 @@ function App() {
       <div className="container">
         <MapContainer setRestaurants={setRestaurants}/>
         <Side restaurants={restaurants} setSelectedRestaurant= {setSelectedRestaurant}/>
-        <Modal restaurants={restaurants} />
+        <Modal restaurants={restaurants} selectedRestaurant= {selectedRestaurant} setSelectedRestaurant= {setSelectedRestaurant}/>
       </div>
       
     </div>

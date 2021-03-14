@@ -18,6 +18,7 @@ function MapContainer({setRestaurants}) {
   const [mapState, setMapState] = useState(null);
   const [results, setResults] = useState(null);
   ///////////////////////////////////////////////////
+
   useEffect(() => {
     getLocation();
   }, []);
@@ -157,8 +158,12 @@ function MapContainer({setRestaurants}) {
 
       <></>
     </GoogleMap>
+  
   );
+
+
 }
+
 
 export default React.memo(MapContainer);
 //export results;

@@ -7,7 +7,7 @@ import "./App.css";
 function RestaurantItem({ restaurant , setSelectedRestaurant}) {
 function onClick(){
   console.log(restaurant.name, " was clicked");
-  setSelectedRestaurant(restaurant.name);
+  setSelectedRestaurant(restaurant.place_id);
 
 
   

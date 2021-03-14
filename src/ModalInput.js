@@ -34,10 +34,13 @@ function ModalInput( {restaurant, selectedRestaurant} ) {
 */
 
 
-  console.log(restaurant);
+  console.log(selectedRestaurant);
+  console.log("was clicked");
 /////////////////////////////////////////////
-if (selectedRestaurant!==null) {
+
   return (
+
+//const shownRestaurant = 
     
     <div className="reviewItem" className={restaurant.ratings.RatingID}>
       <hr />
@@ -61,8 +64,7 @@ if (selectedRestaurant!==null) {
     </div>
   );
 }
-else{return null}
-}
+
 //let ratingSrc = document.getElementsByClassName("ratingPic").src;
 //console.log(ratingSrc);
 /*

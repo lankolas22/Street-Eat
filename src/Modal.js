@@ -17,6 +17,9 @@ function Modal({ selectedRestaurant, setSelectedRestaurant }) {
         <div className="modalClose" onClick={onClickOff}>
           X
         </div>
+
+{////////////////////////////////////////////////////////////////////////////////////////////////////////}
+  }
         <div className="RestaurantReview">
           {restaurantData.map((Reviews) => {
             // console.log(Reviews);
@@ -29,6 +32,9 @@ function Modal({ selectedRestaurant, setSelectedRestaurant }) {
             );
           })}
         </div>
+      
+{////////////////////////////////////////////////////////////////////////////////////////////////////////}
+  }      
       </article>
     );
   } else {

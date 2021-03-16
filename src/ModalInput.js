@@ -7,15 +7,84 @@ import three from "./3.png";
 import four from "./4.png";
 import five from "./5.png";
 
+function ModalInput({ restaurant, selectedRestaurant }) {
+  //console.log("PLACE_ID ", selectedRestaurant, " was clicked");
 
-function ModalInput( {restaurant, selectedRestaurant} ) {
-  console.log("passed down", selectedRestaurant);
-  //   passes down state of null or clicked restaurant
+  /////////////////////////////////////////////
 
-  //console.log("modal restaurants", restaurant);
+ 
+function convert(num) {
+  if (num === 1) {
+    return one
+  }
+  if (num === 2) {
+    return two
+  }
+  if (num === 3) {
+    return three
+  }
+  if (num === 4) {
+    return four
+  }
+  if (num === 5) {
+    return five
+  }
+  else  {
+    return 
+  }
+}
+  return (
+    //const shownRestaurant =
 
-  ///////////////////////////////////////////
-  /*
+    <div className="reviewItem" className={restaurant.ratings.RatingID}>
+      {""}
+
+      <h1 className="ModalHeader">{restaurant.name}</h1>
+
+      <img
+        className="modalImage"
+        src={restaurant.image}
+        alt="image of restaurant"
+      />
+
+      {restaurant.ratings.map((rating) => (
+        <div>
+          <p key={rating.ratingID}>
+            {""}
+            <blockquote>
+              <img src={convert(rating.rating)} className="ratingStars"></img>
+
+              <br />
+              {`${rating.comment}`}
+             
+            </blockquote>
+          </p>
+        </div>
+      ))}
+      <hr />
+    </div>
+  );
+}
+
+//console.log("passed down", selectedRestaurant);
+//   passes down state of null or clicked restaurant
+
+//console.log("modal restaurants", restaurant);
+
+///////////////////////////////////////////
+/*
+
+            <blockquote>
+              <span className="ratingStars">
+                {`${rating.rating}` + " stars"}
+              </span>
+              {": "}
+
+              {`${rating.comment}`}
+            </blockquote>
+
+
+///////////////////////////////////////////////////////////////////////////////////
   const [starsImage, setStarsImage] = useState(null);
   
 
@@ -32,38 +101,6 @@ function ModalInput( {restaurant, selectedRestaurant} ) {
     console.log("setImage Ready");
    }
 */
-
-
-  console.log(selectedRestaurant);
-  console.log("was clicked");
-/////////////////////////////////////////////
-
-  return (
-
-//const shownRestaurant = 
-    
-    <div className="reviewItem" className={restaurant.ratings.RatingID}>
-      <hr />
-      <h2 className="ModalHeader">{restaurant.name}</h2>
-
-      <img className ="modalImage" src= {restaurant.image} alt="image of restaurant"/>
-
-      {restaurant.ratings.map((rating) => (
-        <div>
-        
-        <p key={rating.ratingID}>
-          {" "}
-         
-          <span className="ratingsImage">{`${rating.rating}` + " stars"}</span>{": "}
-           
-          {`${rating.comment}`}
-        </p>
-        </div>
-      ))}
-      <hr />
-    </div>
-  );
-}
 
 //let ratingSrc = document.getElementsByClassName("ratingPic").src;
 //console.log(ratingSrc);

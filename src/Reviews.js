@@ -6,7 +6,7 @@ import theFunkyChicken from "./theFunkyChicken.png";
 import pizzaHat from "./pizzaHat.png";
 
 const restaurantData = [ 
-  { place_id: 1,
+  { place_id: "thefunkychicken",
     name: "The Funky Chicken",
     vicinity: "4, Adelaide Street, Cardiff CF10 5BS",
     image: theFunkyChicken,
@@ -41,7 +41,7 @@ const restaurantData = [
     ],
   },
 
-  { place_id: 2,
+  { place_id: "kfseafood",
     name: "K.F.Seafood",
     vicinity: "22 Mermaid Quay, Cardiff, CF10 5BZ",
     image: kFSeafood,
@@ -69,7 +69,7 @@ const restaurantData = [
     ],
   },
 
-  { place_id: 3,
+  { place_id: "kevinvegan",
     name: "Kevin Vegan",
     vicinity: "110 Bute Street, Cardiff CF10 5AJ",
     image: kevinVegan,
@@ -98,7 +98,7 @@ const restaurantData = [
   },
 
 
-  { place_id: 4,
+  { place_id: "whereitallvegan",
     name: "Where it all Vegan",
     vicinity: "2 Pierhead St, Cardiff, CF10 4QQ",
     image: whereItAllVegan,
@@ -134,7 +134,7 @@ const restaurantData = [
     ],
   },
 
-  { place_id: 5,
+  { place_id: "pizzahat",
     name: "Pizza Hat",
     vicinity: "Dumballs Road Bottom, Cardiff CF10 5FW",
     image: pizzaHat,

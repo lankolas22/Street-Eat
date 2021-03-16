@@ -6,10 +6,9 @@ import MapContainer from "./MapContainer";
 import Side from "./Side";
 import Modal from "./Modal";
 
-
 function App() {
   const [restaurants, setRestaurants] = useState([]);
- 
+
   //    [    current state  , function how to change state ] = initial state
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
@@ -20,21 +19,23 @@ function App() {
         <h1 className="MainLogoText">
           <u>Street Eat</u>
         </h1>
-        <p className="TagLine">Word on the Street for where to Eat</p>
+        <h5 className="TagLine">Word on the Street for where to Eat </h5>
       </header>
       <div className="container">
-        <MapContainer setRestaurants={setRestaurants}           restaurants={restaurants}
-          selectedRestaurant={selectedRestaurant}/>
+        <MapContainer
+          setRestaurants={setRestaurants}
+          restaurants={restaurants}
+          selectedRestaurant={selectedRestaurant}
+        />
         <Side
           restaurants={restaurants}
           setSelectedRestaurant={setSelectedRestaurant}
         />
         <Modal
-restaurants={restaurants}
-selectedRestaurant={selectedRestaurant}
-setSelectedRestaurant={setSelectedRestaurant}
-/>
-
+          restaurants={restaurants}
+          selectedRestaurant={selectedRestaurant}
+          setSelectedRestaurant={setSelectedRestaurant}
+        />
       </div>
     </div>
   );

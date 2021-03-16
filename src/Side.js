@@ -1,6 +1,7 @@
 import React from "react";
 import RestaurantItem from "./RestaurantItem";
 import { restaurantData } from "./Reviews";
+import Filter from "./Filter";
 
 
 function Side({restaurants , setSelectedRestaurant}) {
@@ -9,6 +10,10 @@ function Side({restaurants , setSelectedRestaurant}) {
 
   return (
     <div className="Aside">
+      <Filter />
+      <div className="Filter">
+
+      </div>
       <div className="RestaurantList">
         {restaurantData.map((Reviews) => {
           // console.log(Reviews);

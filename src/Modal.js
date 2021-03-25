@@ -13,13 +13,14 @@ function Modal({ selectedRestaurant, setSelectedRestaurant }) {
       // if null change display to none otherwise display block and input to selectedRestaurant
 
       <article className="Modal">
-        <div className="modalPadding"></div>
+        <div className="modalPadding">
         <div className="modalClose" onClick={onClickOff}>
           X
         </div>
 
-{////////////////////////////////////////////////////////////////////////////////////////////////////////}
-  }
+        {
+          ////////////////////////////////////////////////////////////////////////////////////////////////////////}
+        }
         <div className="RestaurantReview">
           {restaurantData.map((Reviews) => {
             // console.log(Reviews);
@@ -32,9 +33,11 @@ function Modal({ selectedRestaurant, setSelectedRestaurant }) {
             );
           })}
         </div>
-      
-{////////////////////////////////////////////////////////////////////////////////////////////////////////}
-  }      
+        </div>
+
+        {
+          ////////////////////////////////////////////////////////////////////////////////////////////////////////}
+        }
       </article>
     );
   } else {

@@ -12,27 +12,25 @@ function ModalInput({ restaurant, selectedRestaurant }) {
 
   /////////////////////////////////////////////
 
- 
-function convert(num) {
-  if (num === 1) {
-    return one
+  function convert(num) {
+    if (num === 1) {
+      return one;
+    }
+    if (num === 2) {
+      return two;
+    }
+    if (num === 3) {
+      return three;
+    }
+    if (num === 4) {
+      return four;
+    }
+    if (num === 5) {
+      return five;
+    } else {
+      return;
+    }
   }
-  if (num === 2) {
-    return two
-  }
-  if (num === 3) {
-    return three
-  }
-  if (num === 4) {
-    return four
-  }
-  if (num === 5) {
-    return five
-  }
-  else  {
-    return 
-  }
-}
   return (
     //const shownRestaurant =
 
@@ -56,7 +54,6 @@ function convert(num) {
 
               <br />
               {`${rating.comment}`}
-             
             </blockquote>
           </p>
         </div>

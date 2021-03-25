@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { restaurantData } from "./Reviews";
+import Modal from "./Modal";
 //import burgerMarker from "./marker.png";
 //import setRestaurants from "./App";
 
@@ -11,8 +12,7 @@ const containerStyle = {
 let service;
 let infowindow;
 /////////////////////////////////////////////////////
-function MapContainer({setRestaurants}) {
-
+function MapContainer({selectedRestaurant, setRestaurants, restaurants, setSelectedRestaurant}) {
   //console.log("MapContainer function");
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);
@@ -58,7 +58,7 @@ function MapContainer({setRestaurants}) {
 
     setResults(results);
     setRestaurants(results);
-    
+
     if (status == window.google.maps.places.PlacesServiceStatus.OK) {
       for (let i = 0; i < results.length; i++) {
         createMarker(results[i]);
@@ -119,6 +119,15 @@ function MapContainer({setRestaurants}) {
     setMapState(map);
   };
   //console.log("map is loading");
+  if (selectedRestaurant) {
+    return (selectedRestaurant &&
+      <Modal
+        restaurants={results}
+        selectedRestaurant={results.find(res => res.place_id === selectedRestaurant)}
+        setSelectedRestaurant={selectedRestaurant}
+      />
+    );
+  }
   return (
     <GoogleMap
       mapContainerStyle={containerStyle}
@@ -158,12 +167,8 @@ function MapContainer({setRestaurants}) {
 
       <></>
     </GoogleMap>
-  
   );
-
-
 }
-
 
 export default React.memo(MapContainer);
 //export results;

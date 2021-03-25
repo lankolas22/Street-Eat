@@ -23,22 +23,27 @@ function App() {
       </header>
       <div className="container">
         <MapContainer
-          setRestaurants={setRestaurants}
-          restaurants={restaurants}
+          setSelectedRestaurant={setSelectedRestaurant}
           selectedRestaurant={selectedRestaurant}
+          setRestaurants={setRestaurants}
         />
         <Side
           restaurants={restaurants}
           setSelectedRestaurant={setSelectedRestaurant}
         />
-        <Modal
-          restaurants={restaurants}
-          selectedRestaurant={selectedRestaurant}
-          setSelectedRestaurant={setSelectedRestaurant}
-        />
+
       </div>
     </div>
   );
 }
+/*  WAS BELOW <Side />
+
+       <Modal
+          restaurants={restaurants}
+          setSelectedRestaurant={setSelectedRestaurant}
+          selectedRestaurant={selectedRestaurant}
+        /> 
+
+*/
 
 export default App;

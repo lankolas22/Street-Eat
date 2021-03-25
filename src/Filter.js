@@ -2,7 +2,7 @@ import React from "react";
 function Filter() {
   return (
     <div className="FilterContainer">
-      <h2>  Filter by Price Level:</h2>
+      <h2>  Filter by Rating:</h2>
       <ul className="priceFilter">
         <li>
           <div className="priceButton" id="price1">1</div>

@@ -4,13 +4,12 @@ import { restaurantData } from "./Reviews";
 import Filter from "./Filter";
 
 function Side({ restaurants, setSelectedRestaurant }) {
-  console.log("side restaurants", restaurants);
-  console.log("side modal state", setSelectedRestaurant);
+  //console.log("side restaurants", restaurants);
+  //console.log("side modal state", setSelectedRestaurant);
 
   return (
     <div className="Aside">
       <Filter />
-      <div className="Filter"></div>
       <div className="RestaurantList">
         {restaurantData.map((Reviews) => {
           // console.log(Reviews);

@@ -7,7 +7,7 @@ import three from "./3.png";
 import four from "./4.png";
 import five from "./5.png";
 
-function ModalInput({ restaurant, selectedRestaurant }) {
+function ModalInput({  selectedRestaurant }) {
   //console.log("PLACE_ID ", selectedRestaurant, " was clicked");
 
   /////////////////////////////////////////////
@@ -34,18 +34,18 @@ function ModalInput({ restaurant, selectedRestaurant }) {
   return (
     //const shownRestaurant =
 
-    <div className="reviewItem" className={restaurant.ratings.RatingID}>
+    <div className="reviewItem" className={selectedRestaurant.ratings.RatingID}>
       {""}
 
-      <h1 className="ModalHeader">{restaurant.name}</h1>
+      <h1 className="ModalHeader">{selectedRestaurant.name}</h1>
 
       <img
         className="modalImage"
-        src={restaurant.image}
-        alt="image of restaurant"
+        src={selectedRestaurant.image}
+        alt="image of Restaurant"
       />
 
-      {restaurant.ratings.map((rating) => (
+      {selectedRestaurant.ratings.map((rating) => (
         <div>
           <p key={rating.ratingID}>
             {""}
@@ -58,7 +58,7 @@ function ModalInput({ restaurant, selectedRestaurant }) {
           </p>
         </div>
       ))}
-      <hr />
+      <br />
     </div>
   );
 }

@@ -7,6 +7,7 @@ function Modal({ selectedRestaurant, setSelectedRestaurant }) {
     console.log("closed");
     setSelectedRestaurant(null);
   }
+  console.log("selectedRestaurant", selectedRestaurant);
 
   if (selectedRestaurant !== null) {
     return (
@@ -14,25 +15,16 @@ function Modal({ selectedRestaurant, setSelectedRestaurant }) {
 
       <article className="Modal">
         <div className="modalPadding">
-        <div className="modalClose" onClick={onClickOff}>
-          X
-        </div>
+          <div className="modalClose" onClick={onClickOff}>
+            X
+          </div>
 
-        {
-          ////////////////////////////////////////////////////////////////////////////////////////////////////////}
-        }
-        <div className="RestaurantReview">
-          {restaurantData.map((Reviews) => {
-            // console.log(Reviews);
-            return (
-              // props
-              <ModalInput
-                restaurant={Reviews}
-                selectedRestaurant={selectedRestaurant}
-              />
-            );
-          })}
-        </div>
+          {
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////}
+          }
+          <div className="RestaurantReview">
+            <ModalInput selectedRestaurant={selectedRestaurant} />
+          </div>
         </div>
 
         {

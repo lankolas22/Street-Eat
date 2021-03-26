@@ -119,16 +119,20 @@ function MapContainer({selectedRestaurant, setRestaurants, restaurants, setSelec
     setMapState(map);
   };
   //console.log("map is loading");
-  if (selectedRestaurant) {
-    return (selectedRestaurant &&
+
+
+    console.log(selectedRestaurant)
+    return (
+      <>
+      {selectedRestaurant &&
       <Modal
         restaurants={results}
-        selectedRestaurant={results.find(res => res.place_id === selectedRestaurant)}
-        setSelectedRestaurant={selectedRestaurant}
+        selectedRestaurant={selectedRestaurant}
+        setSelectedRestaurant={setSelectedRestaurant}
       />
-    );
-  }
-  return (
+      }
+  
+ 
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
@@ -167,6 +171,7 @@ function MapContainer({selectedRestaurant, setRestaurants, restaurants, setSelec
 
       <></>
     </GoogleMap>
+    </>
   );
 }
 

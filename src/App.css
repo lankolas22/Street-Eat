@@ -81,7 +81,6 @@ font-family: 'Monoton', cursive; */
 
 .FilterContainer {
   width: 98.5%;
-  /* height: 90px; */
   border: 3px black solid;
   font-family: "ABeeZee", sans-serif;
   background-color: cornsilk;
@@ -89,13 +88,12 @@ font-family: 'Monoton', cursive; */
 
 .RestaurantReview,
 .modalPadding {
-  max-width: 75%;
+  width: 75%;
   margin: 0 auto;
   background-color: #d5ffc2;
 }
 .modalPadding {
   height: 600px;
-
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -141,8 +139,10 @@ blockquote {
 .Modal {
   z-index: 100000000000000;
   display: block;
+  position: absolute;
   padding-top: 2%;
   border-radius: 25px;
+  width:65%;
 }
 
 .ModalHeader {
@@ -155,11 +155,11 @@ blockquote {
   font-size: 1.8rem;
   font-weight: bolder;
 }
-
+/*
 hr {
   border-radius: 5px;
   border: 2px solid;
-}
+} */
 
 .itemDivider {
   width: 75%;

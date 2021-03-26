@@ -54,7 +54,7 @@ const restaurantData = [
       {
         ratingID: 1,
         rating: 2,
-        comment: "There's something fishy about this place",
+        comment: "There's something fishy about this place!  They always get the order wrong, or atleast don't know which type of fish is which!",
       },
       {
         ratingID: 2,
@@ -122,7 +122,7 @@ const restaurantData = [
         rating: 4,
         comment: "So impressive how like meat this tastes",
       },
-      { ratingID: 6, rating: 4, comment: "yummy veggies in my tummy" },
+      { ratingID: 6, rating: 4, comment: "I love it at Where It All Vegan, where their consensus on meat is to ban, so with a knife and fork, I ate their imitation pork, and now i'm their biggest fan!" },
     ],
   },
 
@@ -150,7 +150,7 @@ const restaurantData = [
       {
         ratingID: 4,
         rating: 4,
-        comment: "omnom nom nom nom pepperoni nom nom om",
+        comment: "omnom nom nom nom pepperoni nom nom om.  This place is amazing and the staff are so friendly.  They do the best deep pan anywhere in Cardiff",
       },
     ],
   },

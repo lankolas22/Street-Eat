@@ -11,7 +11,6 @@ function App() {
 
   //    [    current state  , function how to change state ] = initial state
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-
   return (
     <div className="App">
       <header className="App-header">
@@ -31,7 +30,6 @@ function App() {
           restaurants={restaurants}
           setSelectedRestaurant={setSelectedRestaurant}
         />
-
       </div>
     </div>
   );

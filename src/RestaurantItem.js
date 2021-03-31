@@ -6,8 +6,11 @@ import "./App.css";
 function RestaurantItem({ restaurant, setSelectedRestaurant }) {
   function onClick() {
     console.log(restaurant.name, " was clicked");
+    console.log(restaurant.ratings)
 
-if (setSelectedRestaurant === undefined) {
+    
+
+if (restaurant.ratings === undefined) {
   console.log("undefined restaurant")
   return
 }
@@ -26,6 +29,17 @@ if (setSelectedRestaurant === undefined) {
 
       setModalResults(modalResult);
       setRestaurants(modalResult);
+
+    let request = {
+      location: place,
+      radius: "1200",
+      type: ["meal_takeaway"],
+    };
+
+    service = new window.google.maps.places.PlacesService(mapState);
+    service.nearbySearch(request, callback);
+
+
     }
 */
     setSelectedRestaurant(restaurant);

@@ -1,27 +1,49 @@
 import React from "react";
-function Filter() {
+function Filter({filterValue}) {
+  function setFilter(filterValue) {
+    console.log(filterValue, " was clicked");
+
+  }
+  let threePlus;
+  let fourPlus;
+
   return (
     <div className="FilterContainer">
-      <h2>  Filter by Rating:</h2>
+      <h2>
+    
+        &nbsp; &nbsp;&nbsp;&nbsp; Filter Restaurant by Rating (out of 5):
+      </h2>
       <ul className="priceFilter">
         <li>
-          <div className="priceButton" id="price1">1</div>
+          <div
+            className="priceButton"
+            onClick={() => setFilter("all")}
+            id="All"
+          >
+            All Restaurants
+          </div>
         </li>
         <li>
-          <div className="priceButton" id="price2">2</div>
+          <div className="priceButton" onClick={() => setFilter(threePlus)} id="price3">
+            3 to 5 Stars
+          </div>
         </li>
         <li>
-          <div className="priceButton" id="price3">3</div>
-        </li>
-        <li>
-          <div className="priceButton" id="price4">4</div>
-        </li>
-        <li>
-          <div className="priceButton" id="price5">5</div>
+          <div className="priceButton" onClick={() => setFilter(fourPlus)} id="price4">
+            4 to 5 Stars
+          </div>
         </li>
       </ul>
     </div>
   );
 }
+/*
+        <li>
+          <div className="priceButton" onClick={() => setFilter(5)} id="price5">
+            {" "}
+            &nbsp;5&nbsp;{" "}
+          </div>
+        </li>
+*/
 
 export default Filter;

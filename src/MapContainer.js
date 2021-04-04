@@ -43,7 +43,7 @@ function MapContainer({selectedRestaurant, setRestaurants, restaurants, setSelec
 
     let request = {
       location: place,
-      radius: "1200",
+      radius: "1800",
       type: ["meal_takeaway"],
     };
 

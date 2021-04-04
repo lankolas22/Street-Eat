@@ -1,8 +1,8 @@
 import React from "react";
-function Filter({filterValue}) {
+function Filter({setFilterValue}) {
   function setFilter(filterValue) {
     console.log(filterValue, " was clicked");
-
+ setFilterValue(filterValue) 
   }
 
   return (

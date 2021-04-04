@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import RestaurantItem from "./RestaurantItem";
 import { restaurantData } from "./Reviews";
 import Filter from "./Filter";
@@ -8,8 +8,8 @@ function Side({ restaurants, setSelectedRestaurant}) {
   console.log(restaurants.rating);
   console.log("this filter value", filterValue);
   console.log("side modal state", setSelectedRestaurant); */
-  let filterValue = null;
-  let threePlusArr = [];
+  const [filterValue, setFilterValue] = useState(null);
+    let threePlusArr = [];
   let fourPlusArr = [];
   let listedRestaurants = restaurants;
 
@@ -26,6 +26,7 @@ function Side({ restaurants, setSelectedRestaurant}) {
     }
   }
   if (filterValue === "threePlus") {
+    console.log("three Plus !")
     threePlusArr = [];
     for (let i = 0; i < restaurants.length; i++) {
       let ratingNum = restaurants[i].rating;
@@ -35,8 +36,9 @@ function Side({ restaurants, setSelectedRestaurant}) {
       } else {
         continue;
       }
-      listedRestaurants = threePlusArr;
+      
     }
+    listedRestaurants = threePlusArr;
   }
 
   if (filterValue != "threePlus" || "fourPlus") {
@@ -48,7 +50,7 @@ function Side({ restaurants, setSelectedRestaurant}) {
   /*   */
   return (
     <div className="Aside">
-      <Filter filterValue={filterValue}/>
+      <Filter setFilterValue={setFilterValue}/>
       <div className="RestaurantList">
         {/* 
        

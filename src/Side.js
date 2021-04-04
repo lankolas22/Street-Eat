@@ -3,17 +3,17 @@ import RestaurantItem from "./RestaurantItem";
 import { restaurantData } from "./Reviews";
 import Filter from "./Filter";
 
-function Side({ restaurants, setSelectedRestaurant, filterValue }) {
+function Side({ restaurants, setSelectedRestaurant}) {
  /* console.log("side restaurants", restaurants);
   console.log(restaurants.rating);
   console.log("this filter value", filterValue);
   console.log("side modal state", setSelectedRestaurant); */
-
+  let filterValue = null;
   let threePlusArr = [];
   let fourPlusArr = [];
   let listedRestaurants = restaurants;
 
-  if (filterValue === fourPlus) {
+  if (filterValue === "fourPlus") {
     fourPlusArr = [];
     for (let i = 0; i < restaurants.length; i++) {
       let ratingNum = restaurants[i].rating;
@@ -25,12 +25,13 @@ function Side({ restaurants, setSelectedRestaurant, filterValue }) {
       listedRestaurants = fourPlusArr;
     }
   }
-  if (filterValue === threePlus) {
+  if (filterValue === "threePlus") {
     threePlusArr = [];
     for (let i = 0; i < restaurants.length; i++) {
       let ratingNum = restaurants[i].rating;
       if (ratingNum >= 3) {
         threePlusArr.push(i);
+        console.log(threePlusArr);
       } else {
         continue;
       }
@@ -38,7 +39,7 @@ function Side({ restaurants, setSelectedRestaurant, filterValue }) {
     }
   }
 
-  if (filterValue != threePlus || fourPlus) {
+  if (filterValue != "threePlus" || "fourPlus") {
     listedRestaurants = restaurants;
   }
   console.log("loop test")
@@ -47,7 +48,7 @@ function Side({ restaurants, setSelectedRestaurant, filterValue }) {
   /*   */
   return (
     <div className="Aside">
-      <Filter />
+      <Filter filterValue={filterValue}/>
       <div className="RestaurantList">
         {/* 
        

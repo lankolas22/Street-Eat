@@ -4,8 +4,6 @@ function Filter({filterValue}) {
     console.log(filterValue, " was clicked");
 
   }
-  let threePlus;
-  let fourPlus;
 
   return (
     <div className="FilterContainer">
@@ -24,12 +22,12 @@ function Filter({filterValue}) {
           </div>
         </li>
         <li>
-          <div className="priceButton" onClick={() => setFilter(threePlus)} id="price3">
+          <div className="priceButton" onClick={() => setFilter("threePlus")} id="price3">
             3 to 5 Stars
           </div>
         </li>
         <li>
-          <div className="priceButton" onClick={() => setFilter(fourPlus)} id="price4">
+          <div className="priceButton" onClick={() => setFilter("fourPlus")} id="price4">
             4 to 5 Stars
           </div>
         </li>

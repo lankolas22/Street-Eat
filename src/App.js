@@ -3,11 +3,13 @@ import logo from "./logo.png";
 import CallToAction from "./ctaButton.png";
 import "./App.css";
 import MapContainer from "./MapContainer";
+import { restaurantData } from "./Reviews"
 import Side from "./Side";
 import Modal from "./Modal";
 
 function App() {
-  const [restaurants, setRestaurants] = useState([]);
+  const [restaurants, setRestaurants] = useState(restaurantData);
+
 
   //    [    current state  , function how to change state ] = initial state
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
@@ -24,7 +26,7 @@ function App() {
         <MapContainer
           setSelectedRestaurant={setSelectedRestaurant}
           selectedRestaurant={selectedRestaurant}
-          setRestaurants={setRestaurants}
+          setRestaurants={(restaurants) => setRestaurants({...restaurantData, restaurants})}
         />
         <Side
           restaurants={restaurants}

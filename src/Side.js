@@ -1,76 +1,53 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import RestaurantItem from "./RestaurantItem";
 import { restaurantData } from "./Reviews";
 import Filter from "./Filter";
 
-function Side({ restaurants, setSelectedRestaurant}) {
- /* console.log("side restaurants", restaurants);
+function Side({ restaurants, setSelectedRestaurant }) {
+  /* console.log("side restaurants", restaurants);
   console.log(restaurants.rating);
   console.log("this filter value", filterValue);
   console.log("side modal state", setSelectedRestaurant); */
   const [filterValue, setFilterValue] = useState(null);
-    let threePlusArr = [];
+  let threePlusArr = [];
   let fourPlusArr = [];
-  let listedRestaurants = restaurants;
+  let filteredRestaurants = restaurants;
 
   if (filterValue === "fourPlus") {
     fourPlusArr = [];
     for (let i = 0; i < restaurants.length; i++) {
       let ratingNum = restaurants[i].rating;
       if (ratingNum >= 4) {
-        fourPlusArr.push(i);
-      } else {
-        continue;
+        fourPlusArr.push(restaurants[i]);
       }
-      listedRestaurants = fourPlusArr;
     }
+    filteredRestaurants = fourPlusArr;
   }
   if (filterValue === "threePlus") {
-    console.log("three Plus !")
+    console.log("three Plus !");
     threePlusArr = [];
     for (let i = 0; i < restaurants.length; i++) {
       let ratingNum = restaurants[i].rating;
       if (ratingNum >= 3) {
-        threePlusArr.push(i);
-        console.log(threePlusArr);
-      } else {
-        continue;
+        threePlusArr.push(restaurants[i]);
       }
-      
     }
-    listedRestaurants = threePlusArr;
+    filteredRestaurants = threePlusArr;
   }
 
-  if (filterValue != "threePlus" || "fourPlus") {
-    listedRestaurants = restaurants;
+  if (filterValue != "threePlus" && filterValue != "fourPlus") {
+    filteredRestaurants = restaurants;
   }
-  console.log("loop test")
-  console.log(restaurants)
+  console.log("loop test");
+  console.log("filtered Restaurants Loaded", filteredRestaurants);
   //console.log(fourPlusArr);
   /*   */
   return (
     <div className="Aside">
-      <Filter setFilterValue={setFilterValue}/>
+      <Filter setFilterValue={setFilterValue} />
       <div className="RestaurantList">
-        {/* 
-       
-       if (filterState === threePlus) {
-         selectedSide === Reviews.3, Reviews.4, Reviews.5
-       } 
-
-       if (filterState === fourPlus) {
-         selectedSide === Reviews.4, Reviews.5
-       }
-
-      else  {
-         selectedSide === Reviews
-       }
-
-       replace below Reviews  with "selectedSide"
-       
-       */}
-
-        {/*dummy data*/}
+        {/*   //dummy data 
+        
         {restaurantData.map((Reviews) => {
           // console.log(Reviews);
           return (
@@ -80,9 +57,9 @@ function Side({ restaurants, setSelectedRestaurant}) {
               setSelectedRestaurant={setSelectedRestaurant}
             />
           );
-        })}
+        })} */}
         {/*live data*/}
-        {restaurants.map((restaurants) => {
+        {filteredRestaurants.map((restaurants) => {
           return (
             // props
             <RestaurantItem
@@ -98,16 +75,4 @@ function Side({ restaurants, setSelectedRestaurant}) {
 
 export default Side;
 
-/*
 
-
-
-        {restaurants.map((restaurants) => {
-          return (
-            // props
-            <RestaurantItem restaurant={restaurants} />
-          );
-        })}
-
-
-*/

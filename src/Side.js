@@ -13,6 +13,7 @@ function Side({ restaurants, setSelectedRestaurant }) {
   let fourPlusArr = [];
   let filteredRestaurants = restaurants;
 
+
   if (filterValue === "fourPlus") {
     fourPlusArr = [];
     for (let i = 0; i < restaurants.length; i++) {
@@ -39,12 +40,16 @@ function Side({ restaurants, setSelectedRestaurant }) {
     filteredRestaurants = restaurants;
   }
   console.log("loop test");
+  console.log(typeof filteredRestaurants)
   console.log("filtered Restaurants Loaded", filteredRestaurants);
+  //console.log(typeof filteredRestaurants)
+  //console.log(typeof restaurants)
   //console.log(fourPlusArr);
   /*   */
   return (
     <div className="Aside">
       <Filter setFilterValue={setFilterValue} />
+      
       <div className="RestaurantList">
         {/*   //dummy data 
         

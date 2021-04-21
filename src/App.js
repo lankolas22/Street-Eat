@@ -13,6 +13,7 @@ function App() {
 
   //    [    current state  , function how to change state ] = initial state
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -26,7 +27,10 @@ function App() {
         <MapContainer
           setSelectedRestaurant={setSelectedRestaurant}
           selectedRestaurant={selectedRestaurant}
-          setRestaurants={(restaurants) => setRestaurants({...restaurantData, restaurants})}
+          setRestaurants={(restaurants) => {
+            console.log("log of restaurants", restaurants)
+            setRestaurants([...restaurantData, ...restaurants])
+          }}
         />
         <Side
           restaurants={restaurants}

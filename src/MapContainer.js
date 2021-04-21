@@ -8,11 +8,17 @@ import Modal from "./Modal";
 const containerStyle = {
   width: "65%",
   height: "625px",
+ 
 };
 let service;
 let infowindow;
 /////////////////////////////////////////////////////
-function MapContainer({selectedRestaurant, setRestaurants, restaurants, setSelectedRestaurant}) {
+function MapContainer({
+  selectedRestaurant,
+  setRestaurants,
+  restaurant,
+  setSelectedRestaurant,
+}) {
   //console.log("MapContainer function");
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);
@@ -49,6 +55,7 @@ function MapContainer({selectedRestaurant, setRestaurants, restaurants, setSelec
 
     service = new window.google.maps.places.PlacesService(mapState);
     service.nearbySearch(request, callback);
+
   }
   ///////////////////////////////////////////////
   function callback(results, status) {
@@ -87,10 +94,14 @@ function MapContainer({selectedRestaurant, setRestaurants, restaurants, setSelec
       mapState,
       position: place.geometry.location,
     });
+
+    /////////////////////////////////////////////////
+    /*what does this section do? */
     window.google.maps.event.addListener(marker, "click", () => {
       infowindow.setContent(place.name || "");
       infowindow.open(mapState);
     });
+    ///////////////////////////////////////////////
   }
   ///////////////////////////////////////////////
   function getLocation() {
@@ -120,57 +131,75 @@ function MapContainer({selectedRestaurant, setRestaurants, restaurants, setSelec
   };
   //console.log("map is loading");
 
+  function onClickModal(id) {
+  //  setSelectedRestaurant(restaurant);
+    console.log(id);
+  }
 
-    console.log(selectedRestaurant)
-    return (
-      <>
-      {selectedRestaurant &&
-      <Modal
-        restaurants={results}
-        selectedRestaurant={selectedRestaurant}
-        setSelectedRestaurant={setSelectedRestaurant}
-      />
-      }
-  
- 
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={center}
-      zoom={16}
-      onLoad={onMapLoad}
-    >
-      {/* Marker for the user */}
-      <Marker
-        onLoad={(marker) => {}}
-        position={center}
-        icon={"http://maps.google.com/mapfiles/kml/paddle/red-stars.png"}
-      />
+  return (
+    <>
+      {selectedRestaurant && (
+        <Modal
+          restaurants={results}
+          selectedRestaurant={selectedRestaurant}
+          setSelectedRestaurant={setSelectedRestaurant}
+        />
+      )}
 
-      {/* the markers for the real restaurants */}
-      {results &&
-        results.map((result) => (
-          <Marker
-            position={{
-              lat: result.geometry.location.lat(),
-              lng: result.geometry.location.lng(),
-            }}
-            icon={"http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"}
-          />
-        ))}
-      {/* the markers for the dummy restaurants */}
-      {restaurantData &&
-        restaurantData.map((result) => (
-          <Marker
-            position={{
-              lat: result.lat,
-              lng: result.lng,
-            }}
-            icon={"http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"}
-          />
-        ))}
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        disableDoubleClickZoom= {true}
+        zoom={16}
+        onLoad={onMapLoad}
+      >
+        {/* Marker for the user */}
+        <Marker
+          //onLoad={(marker) => {}}
+          position={center}
+          icon={"http://maps.google.com/mapfiles/kml/paddle/red-stars.png"}
+        />
 
-      <></>
-    </GoogleMap>
+        {/* the markers for the real restaurants */}
+        {results &&
+          results.map((result) => (
+            
+            <Marker 
+            ////////
+              onClick={onClickModal}
+              id={result.place_id} 
+            ////////
+              position={{
+                lat: result.geometry.location.lat(),
+                lng: result.geometry.location.lng(),
+              }}
+              icon={
+                "http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"
+              }
+            />
+          ))}
+        {/* the markers for the dummy restaurants */}
+        {restaurantData &&
+          restaurantData.map((result) => (
+            <Marker
+            ////////
+              onClick={onClickModal}
+              id={result.place_id} 
+              /*
+              id={restaurant.place_id} */
+            ////////
+              position={{
+                lat: result.lat,
+                lng: result.lng,
+              }}
+              icon={
+                "http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"
+              }
+            />
+          ))}
+
+        <></>
+      </GoogleMap>
     </>
   );
 }

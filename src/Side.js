@@ -40,8 +40,11 @@ function Side({ restaurants, setSelectedRestaurant }) {
     filteredRestaurants = restaurants;
   }
   console.log("loop test");
-  console.log(typeof filteredRestaurants)
+
+
   console.log("filtered Restaurants Loaded", filteredRestaurants);
+
+  
   //console.log(typeof filteredRestaurants)
   //console.log(typeof restaurants)
   //console.log(fourPlusArr);
@@ -51,18 +54,7 @@ function Side({ restaurants, setSelectedRestaurant }) {
       <Filter setFilterValue={setFilterValue} />
       
       <div className="RestaurantList">
-        {/*   //dummy data 
-        
-        {restaurantData.map((Reviews) => {
-          // console.log(Reviews);
-          return (
-            // props
-            <RestaurantItem
-              restaurant={Reviews}
-              setSelectedRestaurant={setSelectedRestaurant}
-            />
-          );
-        })} */}
+
         {/*live data*/}
         {filteredRestaurants.map((restaurants) => {
           return (
@@ -79,5 +71,18 @@ function Side({ restaurants, setSelectedRestaurant }) {
 }
 
 export default Side;
+
+        {/*   //dummy data 
+        
+        {restaurantData.map((Reviews) => {
+          // console.log(Reviews);
+          return (
+            // props
+            <RestaurantItem
+              restaurant={Reviews}
+              setSelectedRestaurant={setSelectedRestaurant}
+            />
+          );
+        })} */}
 
 

@@ -16,6 +16,7 @@ if (restaurant.ratings === undefined) {
 }
 
     setSelectedRestaurant(restaurant);
+    console.log("restaurant is this")
     console.log(restaurant)
   }
   return (

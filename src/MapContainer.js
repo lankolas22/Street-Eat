@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { restaurantData } from "./Reviews";
 import Modal from "./Modal";
+import Input from "./Input";
 //import burgerMarker from "./marker.png";
 //import setRestaurants from "./App";
 
 const containerStyle = {
   width: "65%",
   height: "625px",
- 
 };
 let service;
 let infowindow;
@@ -23,6 +23,7 @@ function MapContainer({
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);
   const [results, setResults] = useState(null);
+  //const [input, setInput] = useState(null);
   ///////////////////////////////////////////////////
 
   useEffect(() => {
@@ -55,7 +56,6 @@ function MapContainer({
 
     service = new window.google.maps.places.PlacesService(mapState);
     service.nearbySearch(request, callback);
-
   }
   ///////////////////////////////////////////////
   function callback(results, status) {
@@ -89,7 +89,7 @@ function MapContainer({
   function createMarker(place) {
     //console.log("createMarker function");
     if (!place.geometry || !place.geometry.location) return;
-
+    //console.log(place)
     const marker = new window.google.maps.Marker({
       mapState,
       position: place.geometry.location,
@@ -132,10 +132,25 @@ function MapContainer({
   //console.log("map is loading");
 
   function onClickModal(id) {
-  //  setSelectedRestaurant(restaurant);
-    console.log(id);
+    setSelectedRestaurant(id);
+    //    console.log(id);
   }
+  function addRestaurant(lat, lng) {
+    console.log("Right Click");
 
+    //setInput("active")
+
+    let newRestaurant = {
+      place_id: "",
+      name: "",
+      vicinity: "",
+      lat: lat,
+      lng: lng,
+    }
+    console.log(newRestaurant)
+
+
+  }
   return (
     <>
       {selectedRestaurant && (
@@ -146,10 +161,17 @@ function MapContainer({
         />
       )}
 
+      {//<Input      />
+      }
+
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        disableDoubleClickZoom= {true}
+        onRightClick={(e) => {
+          let lat = e.latLng.lat();
+          let lng = e.latLng.lng();
+          addRestaurant(lat, lng);
+        }}
         zoom={16}
         onLoad={onMapLoad}
       >
@@ -163,12 +185,11 @@ function MapContainer({
         {/* the markers for the real restaurants */}
         {results &&
           results.map((result) => (
-            
-            <Marker 
-            ////////
-              onClick={onClickModal}
-              id={result.place_id} 
-            ////////
+            <Marker
+              ////////
+              onClick={() => onClickModal(result)}
+              id={result}
+              ////////
               position={{
                 lat: result.geometry.location.lat(),
                 lng: result.geometry.location.lng(),
@@ -182,12 +203,12 @@ function MapContainer({
         {restaurantData &&
           restaurantData.map((result) => (
             <Marker
-            ////////
-              onClick={onClickModal}
-              id={result.place_id} 
+              ////////
+              onClick={() => onClickModal(result)}
+              id={result}
               /*
               id={restaurant.place_id} */
-            ////////
+              ////////
               position={{
                 lat: result.lat,
                 lng: result.lng,

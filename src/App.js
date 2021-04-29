@@ -22,6 +22,8 @@ function App() {
           <u>Street Eat</u>
         </h1>
         <h5 className="TagLine">Word on the Street for where to Eat </h5>
+
+        <p className="AddMessage">&nbsp; Don't see your favourite takeaway?  Right click on the map to add it! &nbsp;</p>
       </header>
       <div className="container">
         <MapContainer

@@ -23,7 +23,7 @@ function MapContainer({
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);
   const [results, setResults] = useState(null);
-  //const [input, setInput] = useState(null);
+  const [addRestaurantModal, setAddRestaurantModal] = useState(null);
   ///////////////////////////////////////////////////
 
   useEffect(() => {
@@ -135,10 +135,10 @@ function MapContainer({
     setSelectedRestaurant(id);
     //    console.log(id);
   }
-  function addRestaurant(lat, lng) {
+  const addRestaurant = (lat, lng)=> {
     console.log("Right Click");
 
-    //setInput("active")
+    setAddRestaurantModal(true);
 
     let newRestaurant = {
       place_id: "",
@@ -146,10 +146,8 @@ function MapContainer({
       vicinity: "",
       lat: lat,
       lng: lng,
-    }
-    console.log(newRestaurant)
-
-
+    };
+    console.log(newRestaurant);
   }
   return (
     <>
@@ -160,9 +158,7 @@ function MapContainer({
           setSelectedRestaurant={setSelectedRestaurant}
         />
       )}
-
-      {//<Input      />
-      }
+      {addRestaurantModal && <Input addRestaurantModal={addRestaurantModal} />}
 
       <GoogleMap
         mapContainerStyle={containerStyle}

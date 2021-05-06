@@ -29,6 +29,9 @@ function App() {
         <MapContainer
           setSelectedRestaurant={setSelectedRestaurant}
           selectedRestaurant={selectedRestaurant}
+          addRestaurant={(restaurant) => {
+            setRestaurants([...restaurants, restaurant])
+          }}
           setRestaurants={(restaurants) => {
             console.log("log of restaurants", restaurants)
             setRestaurants([...restaurantData, ...restaurants])

@@ -17,6 +17,7 @@ function MapContainer({
   selectedRestaurant,
   setRestaurants,
   restaurant,
+ // addRestaurant,
   setSelectedRestaurant,
 }) {
   //console.log("MapContainer function");
@@ -37,6 +38,8 @@ function MapContainer({
   useEffect(() => {
     getResults();
   }, [results]);
+
+
   /////////////////////////////////////////////////
   function initialize() {
     //console.log("initialize function");
@@ -135,20 +138,28 @@ function MapContainer({
     setSelectedRestaurant(id);
     //    console.log(id);
   }
-  const addRestaurant = (lat, lng)=> {
+  const addRestaurant = (lat, lng) => {
     console.log("Right Click");
 
     setAddRestaurantModal(true);
 
+    function placeIDGenerator(placeName) {
+      let placeID = Math.floor(Math.random() * 10000000000);
+      let nameString = placeName.replace(/\s+/g, '')
+      placeID = placeID + nameString.substring(0, 8);
+      console.log(placeID);
+    }
+
+
     let newRestaurant = {
-      place_id: "",
-      name: "",
+      placeName: "the Turkey Place",
+     // place_id: placeIDGenerator(newRestaurant.placeName),
       vicinity: "",
       lat: lat,
       lng: lng,
     };
     console.log(newRestaurant);
-  }
+  };
   return (
     <>
       {selectedRestaurant && (
@@ -158,7 +169,7 @@ function MapContainer({
           setSelectedRestaurant={setSelectedRestaurant}
         />
       )}
-      {addRestaurantModal && <Input addRestaurantModal={addRestaurantModal} />}
+      {addRestaurantModal && <Input addRestaurant={addRestaurant} />}
 
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -216,7 +227,7 @@ function MapContainer({
           ))}
 
         <></>
-      </GoogleMap>
+      </GoogleMap> 
     </>
   );
 }

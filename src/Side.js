@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import RestaurantItem from "./RestaurantItem";
-import { restaurantData } from "./Reviews";
+//import { restaurantData } from "./Reviews";
 import Filter from "./Filter";
 
 function Side({ restaurants, setSelectedRestaurant }) {
@@ -25,7 +25,7 @@ function Side({ restaurants, setSelectedRestaurant }) {
     filteredRestaurants = fourPlusArr;
   }
   if (filterValue === "threePlus") {
-    console.log("three Plus !");
+   // console.log("three Plus !");
     threePlusArr = [];
     for (let i = 0; i < restaurants.length; i++) {
       let ratingNum = restaurants[i].rating;
@@ -36,13 +36,13 @@ function Side({ restaurants, setSelectedRestaurant }) {
     filteredRestaurants = threePlusArr;
   }
 
-  if (filterValue != "threePlus" && filterValue != "fourPlus") {
+  if (filterValue !== "threePlus" && filterValue !== "fourPlus") {
     filteredRestaurants = restaurants;
   }
-  console.log("loop test");
+ // console.log("loop test");
 
 
-  console.log("filtered Restaurants Loaded", filteredRestaurants);
+ // console.log("filtered Restaurants Loaded", filteredRestaurants);
 
   
   //console.log(typeof filteredRestaurants)

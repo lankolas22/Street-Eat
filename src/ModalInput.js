@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
-import { restaurantData } from "./Reviews";
+//import { restaurantData } from "./Reviews";
 import one from "./1.png";
 import two from "./2.png";
 import three from "./3.png";
 import four from "./4.png";
 import five from "./5.png";
+import unrated from "./unrated.png"
 
 function ModalInput({  selectedRestaurant }) {
   //console.log("PLACE_ID ", selectedRestaurant, " was clicked");
@@ -28,13 +29,13 @@ function ModalInput({  selectedRestaurant }) {
     if (num === 5) {
       return five;
     } else {
-      return;
+      return unrated;
     }
   }
   return (
-    //const shownRestaurant =
 
-    <div className="reviewItem" className={selectedRestaurant.ratings.RatingID}>
+
+    <div className="reviewItem" className={selectedRestaurant.ratings.ratingID}>
       {""}
 
       <h1 className="ModalHeader">{selectedRestaurant.name}</h1>
@@ -42,7 +43,7 @@ function ModalInput({  selectedRestaurant }) {
       <img
         className="modalImage"
         src={selectedRestaurant.image}
-        alt="image of Restaurant"
+        alt="image of restaurant" 
       />
 
       {selectedRestaurant.ratings.map((rating) => (
@@ -54,6 +55,7 @@ function ModalInput({  selectedRestaurant }) {
 
               <br />
               {`${rating.comment}`}
+              <br />
             </blockquote>
           </p>
         </div>
@@ -63,60 +65,6 @@ function ModalInput({  selectedRestaurant }) {
   );
 }
 
-//console.log("passed down", selectedRestaurant);
-//   passes down state of null or clicked restaurant
-
-//console.log("modal restaurants", restaurant);
-
-///////////////////////////////////////////
-/*
-
-            <blockquote>
-              <span className="ratingStars">
-                {`${rating.rating}` + " stars"}
-              </span>
-              {": "}
-
-              {`${rating.comment}`}
-            </blockquote>
-
-
-///////////////////////////////////////////////////////////////////////////////////
-  const [starsImage, setStarsImage] = useState(null);
-  
-
-  useEffect(() => {
-    setImage();
-  }, [restaurant]);
-
-  function setImage(restaurant) {
-    
-    if (!{restaurant}) {
-      console.log("setImage not ready");
-      return;
-    }
-    console.log("setImage Ready");
-   }
-*/
-
-//let ratingSrc = document.getElementsByClassName("ratingPic").src;
-//console.log(ratingSrc);
-/*
-if (ratingSrc === 1) {
-  ratingSrc === one;
-}
-if (ratingSrc === 2) {
-  ratingSrc === two;
-}
-if (ratingSrc === 3) {
-  ratingSrc === three;
-}
-if (ratingSrc === 4) {
-  ratingSrc === four;
-} else {
-  ratingSrc === five;
-}  
-*/
 export default ModalInput;
 
 //change the 4 STAR to show actual stars the number of which is determined by rating.stars and then style the stars

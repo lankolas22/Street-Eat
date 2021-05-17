@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import logo from "./logo.png";
-import CallToAction from "./ctaButton.png";
 import "./App.css";
 import MapContainer from "./MapContainer";
-import { restaurantData } from "./Reviews"
+import { restaurantData } from "./Reviews";
 import Side from "./Side";
-import Modal from "./Modal";
+//import Modal from "./Modal";
 
 function App() {
   const [restaurants, setRestaurants] = useState(restaurantData);
-
 
   //    [    current state  , function how to change state ] = initial state
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
@@ -23,18 +21,21 @@ function App() {
         </h1>
         <h5 className="TagLine">Word on the Street for where to Eat </h5>
 
-        <p className="AddMessage">&nbsp; Don't see your favourite takeaway?  Right click on the map to add it! &nbsp;</p>
+        <p className="AddMessage">
+          &nbsp; Don't see your favourite takeaway? Right click on the map to
+          add it! &nbsp;
+        </p>
       </header>
       <div className="container">
         <MapContainer
           setSelectedRestaurant={setSelectedRestaurant}
+          restaurants={restaurants}
           selectedRestaurant={selectedRestaurant}
           addRestaurant={(restaurant) => {
-            setRestaurants([...restaurants, restaurant])
+            setRestaurants([...restaurants, restaurant]);
           }}
           setRestaurants={(restaurants) => {
-            console.log("log of restaurants", restaurants)
-            setRestaurants([...restaurantData, ...restaurants])
+            setRestaurants([...restaurantData, ...restaurants]);
           }}
         />
         <Side
@@ -45,14 +46,5 @@ function App() {
     </div>
   );
 }
-/*  WAS BELOW <Side />
-
-       <Modal
-          restaurants={restaurants}
-          setSelectedRestaurant={setSelectedRestaurant}
-          selectedRestaurant={selectedRestaurant}
-        /> 
-
-*/
 
 export default App;

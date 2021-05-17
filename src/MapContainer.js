@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import { restaurantData } from "./Reviews";
+import { GoogleMap, Marker } from "@react-google-maps/api";
+
 import Modal from "./Modal";
 import Input from "./Input";
-//import burgerMarker from "./marker.png";
-//import setRestaurants from "./App";
+
+import missing from "./missing.jpg";
+
 
 const containerStyle = {
   width: "65%",
@@ -16,15 +17,15 @@ let infowindow;
 function MapContainer({
   selectedRestaurant,
   setRestaurants,
-  restaurant,
- // addRestaurant,
+  restaurants,
+  addRestaurant,
   setSelectedRestaurant,
 }) {
   //console.log("MapContainer function");
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);
-  const [results, setResults] = useState(null);
   const [addRestaurantModal, setAddRestaurantModal] = useState(null);
+  const [newRestaurantLocation, setNewRestaurantLocation] = useState({});
   ///////////////////////////////////////////////////
 
   useEffect(() => {
@@ -34,10 +35,6 @@ function MapContainer({
   useEffect(() => {
     initialize();
   }, [mapState, center]);
-
-  useEffect(() => {
-    getResults();
-  }, [results]);
 
 
   /////////////////////////////////////////////////
@@ -62,51 +59,10 @@ function MapContainer({
   }
   ///////////////////////////////////////////////
   function callback(results, status) {
-    //console.log("callback function");
-    //console.log(typeof results);
-    //console.log("calling back with results, status", results, status);
-
-    setResults(results);
     setRestaurants(results);
-
-    if (status == window.google.maps.places.PlacesServiceStatus.OK) {
-      for (let i = 0; i < results.length; i++) {
-        createMarker(results[i]);
-      }
-    }
-  }
-  ///////////////////////////////////////////////
-  function getResults() {
-    //console.log("getResults function");
-
-    if (!{ results }) {
-      console.log("getResutls() failed");
-      return;
-    }
-    console.log("getResutls() success");
-    //console.log({ results });
   }
 
-  ///////////////////////////////////////////////
 
-  function createMarker(place) {
-    //console.log("createMarker function");
-    if (!place.geometry || !place.geometry.location) return;
-    //console.log(place)
-    const marker = new window.google.maps.Marker({
-      mapState,
-      position: place.geometry.location,
-    });
-
-    /////////////////////////////////////////////////
-    /*what does this section do? */
-    window.google.maps.event.addListener(marker, "click", () => {
-      infowindow.setContent(place.name || "");
-      infowindow.open(mapState);
-    });
-    ///////////////////////////////////////////////
-  }
-  ///////////////////////////////////////////////
   function getLocation() {
     //console.log("getLocation function");
     //console.log("navigator.geolocation", navigator.geolocation);
@@ -138,38 +94,46 @@ function MapContainer({
     setSelectedRestaurant(id);
     //    console.log(id);
   }
-  const addRestaurant = (lat, lng) => {
-    console.log("Right Click");
-
-    setAddRestaurantModal(true);
+ const addNewRestaurant = (name, address) => {
+    //console.log("added restaurant");
 
     function placeIDGenerator(placeName) {
       let placeID = Math.floor(Math.random() * 10000000000);
       let nameString = placeName.replace(/\s+/g, '')
-      placeID = placeID + nameString.substring(0, 8);
-      console.log(placeID);
+      placeID = nameString.substring(0, 8) + placeID ;
+      return placeID
     }
 
 
     let newRestaurant = {
-      placeName: "the Turkey Place",
-     // place_id: placeIDGenerator(newRestaurant.placeName),
-      vicinity: "",
-      lat: lat,
-      lng: lng,
+      name: name,
+      place_id: placeIDGenerator(name),
+      vicinity: address,
+      restaurantType: "dummy",
+      image: missing,
+      ratings: [
+        {
+          ratingID: null,
+          rating: null,
+          comment: "this submission is awaiting approval by our moderators and is not available right now.  Please try again later" 
+          
+        }],
+      ...newRestaurantLocation
     };
-    console.log(newRestaurant);
+    setAddRestaurantModal(false);
+    addRestaurant(newRestaurant)
+    console.log("this is", newRestaurant);
   };
   return (
     <>
       {selectedRestaurant && (
         <Modal
-          restaurants={results}
+          restaurants={restaurants}
           selectedRestaurant={selectedRestaurant}
           setSelectedRestaurant={setSelectedRestaurant}
         />
       )}
-      {addRestaurantModal && <Input addRestaurant={addRestaurant} />}
+      {addRestaurantModal && <Input addNewRestaurant={addNewRestaurant} />}
 
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -177,7 +141,10 @@ function MapContainer({
         onRightClick={(e) => {
           let lat = e.latLng.lat();
           let lng = e.latLng.lng();
-          addRestaurant(lat, lng);
+         setNewRestaurantLocation({
+           lat, lng
+         })
+         setAddRestaurantModal(true);
         }}
         zoom={16}
         onLoad={onMapLoad}
@@ -190,16 +157,15 @@ function MapContainer({
         />
 
         {/* the markers for the real restaurants */}
-        {results &&
-          results.map((result) => (
+        {restaurants && restaurants.filter((r)=> r.restaurantType !== "dummy" ).map((result) => (
             <Marker
               ////////
               onClick={() => onClickModal(result)}
               id={result}
               ////////
               position={{
-                lat: result.geometry.location.lat(),
-                lng: result.geometry.location.lng(),
+                lat: result.geometry === undefined ? result.location.lat : result.geometry.location.lat(),
+                lng: result.geometry === undefined ? result.location.lng : result.geometry.location.lng(),
               }}
               icon={
                 "http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"
@@ -207,8 +173,8 @@ function MapContainer({
             />
           ))}
         {/* the markers for the dummy restaurants */}
-        {restaurantData &&
-          restaurantData.map((result) => (
+        {restaurants && restaurants.filter((r)=> r.restaurantType === "dummy" ).map((result) => (
+    
             <Marker
               ////////
               onClick={() => onClickModal(result)}
@@ -233,4 +199,4 @@ function MapContainer({
 }
 
 export default React.memo(MapContainer);
-//export results;
+

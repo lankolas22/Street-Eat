@@ -1,13 +1,13 @@
 import React from "react";
 import ModalInput from "./ModalInput";
-import { restaurantData } from "./Reviews";
+//import { restaurantData } from "./Reviews";
 
 function Modal({ selectedRestaurant, setSelectedRestaurant }) {
   function onClickOff() {
-    console.log("closed");
+  //  console.log("closed");
     setSelectedRestaurant(null);
   }
-  console.log("selectedRestaurant", selectedRestaurant);
+ // console.log("selectedRestaurant", selectedRestaurant);
 
   if (selectedRestaurant !== null) {
     return (

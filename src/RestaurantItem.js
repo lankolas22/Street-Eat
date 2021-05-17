@@ -5,19 +5,19 @@ import "./App.css";
 
 function RestaurantItem({ restaurant, setSelectedRestaurant }) {
   function onClick() {
-    console.log(restaurant.name, " was clicked");
-    console.log(restaurant.ratings)
+  //  console.log(restaurant.name, " was clicked");
+  //  console.log(restaurant.ratings)
 
 
 
 if (restaurant.ratings === undefined) {
-  console.log("undefined restaurant")
+ // console.log("undefined restaurant")
   return
 }
 
     setSelectedRestaurant(restaurant);
-    console.log("restaurant is this")
-    console.log(restaurant)
+   // console.log("restaurant is this")
+   // console.log(restaurant)
   }
   return (
     <div className="restaurantItem" onClick={onClick} id={restaurant.place_id}>

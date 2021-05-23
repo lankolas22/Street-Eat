@@ -56,6 +56,7 @@ function MapContainer({
 
     service = new window.google.maps.places.PlacesService(mapState);
     service.nearbySearch(request, callback);
+    console.log("service is", service)
   }
   ///////////////////////////////////////////////
   function callback(results, status) {
@@ -122,7 +123,7 @@ function MapContainer({
     };
     setAddRestaurantModal(false);
     addRestaurant(newRestaurant)
-    console.log("this is", newRestaurant);
+
   };
   return (
     <>

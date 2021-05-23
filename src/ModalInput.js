@@ -32,6 +32,9 @@ function ModalInput({  selectedRestaurant }) {
       return unrated;
     }
   }
+
+
+
   return (
 
 

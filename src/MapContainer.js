@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
-
 import Modal from "./Modal";
 import Input from "./Input";
-
 import missing from "./missing.jpg";
 
 
@@ -20,6 +18,7 @@ function MapContainer({
   restaurants,
   addRestaurant,
   setSelectedRestaurant,
+  
 }) {
   //console.log("MapContainer function");
   const [center, setCenter] = useState(null);
@@ -87,6 +86,7 @@ function MapContainer({
   }
 
   const onMapLoad = (map) => {
+    console.log('map', map);
     setMapState(map);
   };
   //console.log("map is loading");
@@ -104,7 +104,6 @@ function MapContainer({
       placeID = nameString.substring(0, 8) + placeID ;
       return placeID
     }
-
 
     let newRestaurant = {
       name: name,
@@ -132,6 +131,7 @@ function MapContainer({
           restaurants={restaurants}
           selectedRestaurant={selectedRestaurant}
           setSelectedRestaurant={setSelectedRestaurant}
+          map = {mapState}
         />
       )}
       {addRestaurantModal && <Input addNewRestaurant={addNewRestaurant} />}
@@ -192,7 +192,6 @@ function MapContainer({
               }
             />
           ))}
-
         <></>
       </GoogleMap> 
     </>

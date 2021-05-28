@@ -1,19 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import ModalInput from "./ModalInput";
-import { GoogleMap } from "@react-google-maps/api";
-//import { restaurantData } from "./Reviews";
 
-function Modal({ selectedRestaurant, setSelectedRestaurant }) {
+
+function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
   console.log("selectedRestaurant is", selectedRestaurant);
   function onClickOff() {
     //console.log("closed");
     setSelectedRestaurant(null);
     //console.log(selectedRestaurant)
-    //    return
+
   }
   let service;
-
-
+  const [reviews, setReviews] = useState(null);
 
   console.log(
     "selectedRestaurant",
@@ -22,8 +20,8 @@ function Modal({ selectedRestaurant, setSelectedRestaurant }) {
   );
 
   if (
-    selectedRestaurant.restaurantType !== "dummy" ||
-    selectedRestaurant.restaurantType === undefined
+    selectedRestaurant.restaurantType !== "dummy" && map
+
   ) {
     console.log(" undefined");
 
@@ -32,54 +30,21 @@ function Modal({ selectedRestaurant, setSelectedRestaurant }) {
       fields: ["name", "rating", "photos", "price_level", "review"],
     };
     //var
-     service = new google.maps.places.PlacesService(map);
+    service = new window.google.maps.places.PlacesService(map);
     service.getDetails(reviewRequest, callback);
-
   }
 
   // Checks that the PlacesServiceStatus is OK, and adds a marker
   // using the place ID and location from the PlacesService.
   function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-console.log(results)
-
+    if (status == window.google.maps.places.PlacesServiceStatus.OK) {
+      console.log('results from reviews', results);
+      setReviews(results)
     }
-    /*
-
-          addRestaurant={(restaurant) => {
-            setRestaurants([...restaurants, restaurant]);
-          }}
-          setRestaurants={(restaurants) => {
-            setRestaurants([...restaurantData, ...restaurants]);
-          }}
-*/
   }
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  //// focus on details call
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  //   then conditions
-
-  // does modal close properly ?
-  // reason: modal with reviews will close but inpout modal is not set properly
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  if (selectedRestaurant !== null) {
+/* selectedRestaurant !== null */
+  if (false) {
     return (
       // if null change display to none otherwise display block and input to selectedRestaurant
 
@@ -93,7 +58,7 @@ console.log(results)
             ////////////////////////////////////////////////////////////////////////////////////////////////////////}
           }
           <div className="RestaurantReview">
-            <ModalInput selectedRestaurant={selectedRestaurant} />
+            <ModalInput reviews={reviews} />
           </div>
         </div>
 

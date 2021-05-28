@@ -35,13 +35,5 @@ function Filter({setFilterValue}) {
     </div>
   );
 }
-/*
-        <li>
-          <div className="priceButton" onClick={() => setFilter(5)} id="price5">
-            {" "}
-            &nbsp;5&nbsp;{" "}
-          </div>
-        </li>
-*/
 
 export default Filter;

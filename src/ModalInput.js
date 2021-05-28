@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-//import { restaurantData } from "./Reviews";
 import one from "./1.png";
 import two from "./2.png";
 import three from "./3.png";
@@ -10,8 +9,6 @@ import unrated from "./unrated.png"
 
 function ModalInput({  selectedRestaurant }) {
   //console.log("PLACE_ID ", selectedRestaurant, " was clicked");
-
-  /////////////////////////////////////////////
 
   function convert(num) {
     if (num === 1) {
@@ -33,10 +30,7 @@ function ModalInput({  selectedRestaurant }) {
     }
   }
 
-
-
   return (
-
 
     <div className="reviewItem" className={selectedRestaurant.ratings.ratingID}>
       {""}

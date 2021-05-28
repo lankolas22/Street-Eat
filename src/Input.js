@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import shock from "./shock.jpg";
 
-
 function Input({ addNewRestaurant }) {
 
   const [name, setName] = useState("");
@@ -11,21 +10,11 @@ function Input({ addNewRestaurant }) {
     //console.log("rName", name, "rAddress", address);
 
     addNewRestaurant(
-      //placeName:
       name,
-
-      //vicinity:
       address
-      
     );
-    //  inputState(null);
+
   }
-
-  /*
-  function onClickOff() {
-    console.log("closed");
-    inputState(null); */
-
 
 
   return (

@@ -4,7 +4,6 @@ import whereItAllVegan from "./whereItAllVegan.png";
 import theFunkyChicken from "./theFunkyChicken.png";
 import pizzaHat from "./pizzaHat.png";
 
-
 const restaurantData = [
   {
     place_id: "thefunkychicken",

@@ -3,7 +3,7 @@ import ModalInput from "./ModalInput";
 
 
 function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
-  console.log("selectedRestaurant is", selectedRestaurant);
+ // console.log("selectedRestaurant is", selectedRestaurant);
   function onClickOff() {
     //console.log("closed");
     setSelectedRestaurant(null);
@@ -13,23 +13,16 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
   let service;
   const [reviews, setReviews] = useState(null);
 
-  console.log(
-    "selectedRestaurant",
-    selectedRestaurant,
-    selectedRestaurant.place_id
-  );
+ // console.log("selectedRestaurant", selectedRestaurant, selectedRestaurant.place_id);
 
   if (
     selectedRestaurant.restaurantType !== "dummy" && map
 
   ) {
-    console.log(" undefined");
-
     let reviewRequest = {
       placeId: selectedRestaurant.place_id,
       fields: ["name", "rating", "photos", "price_level", "review"],
     };
-    //var
     service = new window.google.maps.places.PlacesService(map);
     service.getDetails(reviewRequest, callback);
   }
@@ -44,7 +37,7 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
   }
 
 /* selectedRestaurant !== null */
-  if (false) {
+  if (true) {
     return (
       // if null change display to none otherwise display block and input to selectedRestaurant
 
@@ -58,7 +51,7 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
             ////////////////////////////////////////////////////////////////////////////////////////////////////////}
           }
           <div className="RestaurantReview">
-            <ModalInput reviews={reviews} />
+            <ModalInput reviews={reviews} selectedRestaurant= {selectedRestaurant} />
           </div>
         </div>
 

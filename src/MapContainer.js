@@ -47,9 +47,10 @@ function MapContainer({
     const place = new window.google.maps.LatLng(center.lat, center.lng);
     //console.log("after center is set");
 
+    //1800 a good number
     let request = {
       location: place,
-      radius: "1800",
+      radius: "6800",
       type: ["meal_takeaway"],
     };
 
@@ -86,7 +87,7 @@ function MapContainer({
   }
 
   const onMapLoad = (map) => {
-    console.log('map', map);
+    //console.log('map', map);
     setMapState(map);
   };
   //console.log("map is loading");

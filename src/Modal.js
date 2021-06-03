@@ -11,12 +11,12 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
 
   }
   let service;
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState([]);
 
  // console.log("selectedRestaurant", selectedRestaurant, selectedRestaurant.place_id);
 
   if (
-    selectedRestaurant.restaurantType !== "dummy" && map
+    selectedRestaurant.restaurantType !== "dummy"
 
   ) {
     let reviewRequest = {
@@ -51,9 +51,12 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
             ////////////////////////////////////////////////////////////////////////////////////////////////////////}
           }
           <div className="RestaurantReview">
-            <ModalInput reviews={reviews} selectedRestaurant= {selectedRestaurant} />
+            <ModalInput reviews={reviews.reviews} selectedRestaurant= {selectedRestaurant} />
+            <h3 id="ratingDisclaimer"> PLEASE NOTE: ratings are rounded up or down to the nearest whole number</h3>
           </div>
+
         </div>
+
 
         {
           ////////////////////////////////////////////////////////////////////////////////////////////////////////}

@@ -50,7 +50,7 @@ function MapContainer({
     //1800 a good number
     let request = {
       location: place,
-      radius: "6800",
+      radius: "1800",
       type: ["meal_takeaway"],
     };
 

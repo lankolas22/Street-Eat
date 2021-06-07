@@ -5,20 +5,21 @@ import two from "./2.png";
 import three from "./3.png";
 import four from "./4.png";
 import five from "./5.png";
-import unrated from "./unrated.png"
+import unrated from "./unrated.png";
 
-function ModalInput({selectedRestaurant, reviews}) {
-
-  const restaurantReviews = selectedRestaurant.restaurantType === "dummy" ? selectedRestaurant.ratings : reviews;
-console.log("restaurant reviews are", restaurantReviews);
+function ModalInput({ selectedRestaurant, reviews }) {
+  const restaurantReviews =
+    selectedRestaurant.restaurantType === "dummy"
+      ? selectedRestaurant.ratings
+      : reviews;
+  //console.log("restaurant reviews are", restaurantReviews);
+  console.log("restaurant ", selectedRestaurant);
 
   //console.log("PLACE_ID ", selectedRestaurant, " was clicked");
- // console.log("modal input Reviews", reviews)
-
+  // console.log("modal input Reviews", reviews)
 
   // let imgUrl = selectedRestaurant.photos.[0].html_attributions;
   // console.log(imgUrl);
-
 
   function convert(num) {
     if (num < 1.5) {
@@ -45,41 +46,39 @@ console.log("restaurant reviews are", restaurantReviews);
   // <p key={rating.key}>
   //   {""}
 
-
   //     if restaurant reviews are defined only then execute what is after and and (&&)
   //      {restaurantReviews && restaurantReviews.map((rating) => (
 
-
   return (
-
     <div className="reviewItem" className={selectedRestaurant.name}>
-    
       {""}
 
       <h1 className="ModalHeader">{selectedRestaurant.name}</h1>
 
       <img
         className="modalImage"
-        src={ null
+        src={
+          null
           //selectedRestaurant.photos[0]
         }
-        alt="image of restaurant" 
+        alt="image of restaurant"
       />
- 
-      {restaurantReviews && restaurantReviews.map((rating) => (
-        <div>
-          <p key={rating.key}>
-            {""}
-            <blockquote>
-              <img src={convert(rating.rating)} className="ratingStars"></img>
 
-              <br />
-              {`${rating.text}`}
-              <br />
-            </blockquote>
-          </p>
-        </div>
-      ))}
+      {restaurantReviews &&
+        restaurantReviews.map((rating) => (
+          <div>
+            <p key={rating.key}>
+              {""}
+              <blockquote>
+                <img src={convert(rating.rating)} className="ratingStars"></img>
+
+                <br />
+                {`${rating.text}`}
+                <br />
+              </blockquote>
+            </p>
+          </div>
+        ))}
       <br />
     </div>
   );

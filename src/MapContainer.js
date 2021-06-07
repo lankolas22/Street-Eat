@@ -57,15 +57,17 @@ function MapContainer({
     service = new window.google.maps.places.PlacesService(mapState);
     service.nearbySearch(request, callback);
     console.log("service is", service)
+
   }
   ///////////////////////////////////////////////
   function callback(results, status) {
     setRestaurants(results);
+    console.log("RESULTS ARE", results)
   }
 
 
   function getLocation() {
-    //console.log("getLocation function");
+
     //console.log("navigator.geolocation", navigator.geolocation);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
@@ -96,6 +98,9 @@ function MapContainer({
     setSelectedRestaurant(id);
     //    console.log(id);
   }
+
+  //  SECTION FOR CREATING NEW USER SUBMITTED RESTAURANTS
+
  const addNewRestaurant = (name, address) => {
     //console.log("added restaurant");
 

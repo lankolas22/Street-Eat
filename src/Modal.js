@@ -8,8 +8,8 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
     //console.log("closed");
     setSelectedRestaurant(null);
     //console.log(selectedRestaurant)
-
   }
+
   let service;
   const [reviews, setReviews] = useState([]);
 
@@ -19,12 +19,30 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
     selectedRestaurant.restaurantType !== "dummy"
 
   ) {
+
     let reviewRequest = {
       placeId: selectedRestaurant.place_id,
-      fields: ["name", "rating", "photos", "price_level", "review"],
+      fields: ["name", "rating", "price_level", "review"],
     };
     service = new window.google.maps.places.PlacesService(map);
     service.getDetails(reviewRequest, callback);
+
+////////////////////////////////////
+
+let imgLat = selectedRestaurant.geometry.location.lat();
+let imgLng = selectedRestaurant.geometry.location.lng();
+
+console.log(imgLat, imgLng);
+
+let imgRequest = {
+    location: {imgLat, imgLng},
+    size: "400x600",};
+
+    const streetviewService = new window.google.maps.StreetViewService();
+    streetviewService.getPanorama(imgRequest, callback);
+
+/////////////////////////////////////
+
   }
 
   // Checks that the PlacesServiceStatus is OK, and adds a marker

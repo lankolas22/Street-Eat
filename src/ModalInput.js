@@ -14,8 +14,8 @@ function ModalInput({ selectedRestaurant, reviews }) {
     selectedRestaurant.restaurantType === "dummy"
       ? selectedRestaurant.ratings
       : reviews;
-  //console.log("restaurant reviews are", restaurantReviews);
-  console.log("restaurant ", selectedRestaurant);
+  console.log("restaurant reviews are", reviews);
+ // console.log("restaurant ", selectedRestaurant);
   if (selectedRestaurant.restaurantType !== "dummy") {
     let imgLat = selectedRestaurant.geometry.location.lat();
     let imgLng = selectedRestaurant.geometry.location.lng();
@@ -82,11 +82,14 @@ function ModalInput({ selectedRestaurant, reviews }) {
               {""}
               <blockquote>
                 <img src={convert(rating.rating)} className="ratingStars"></img>
+                {console.log("rating.text is", rating.text)}
+                {console.log("reviews are ", reviews)}
 
                 <br />
-                {rating.text !== undefined
+                {rating.text !== undefined  || reviews !== undefined
                   ? `${rating.text}`
                   : "reviews are currently unavailable for this restaurant"}
+
                 <br />
               </blockquote>
             </p>

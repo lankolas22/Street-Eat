@@ -26,7 +26,6 @@ function Input({ addNewRestaurant , setSelectedRestaurant}) {
   if (true) {
   return (
 
-
     <article className="Input">
       <div className="inputPadding">
         <div

@@ -7,6 +7,8 @@ import four from "./4.png";
 import five from "./5.png";
 import unrated from "./unrated.png";
 
+let latLngImage
+
 function ModalInput({ selectedRestaurant, reviews }) {
   const restaurantReviews =
     selectedRestaurant.restaurantType === "dummy"
@@ -14,8 +16,17 @@ function ModalInput({ selectedRestaurant, reviews }) {
       : reviews;
   //console.log("restaurant reviews are", restaurantReviews);
   console.log("restaurant ", selectedRestaurant);
+ if (selectedRestaurant.restaurantType !== "dummy") {
   let imgLat = selectedRestaurant.geometry.location.lat();
   let imgLng = selectedRestaurant.geometry.location.lng();
+
+  latLngImage = 
+  
+  `https://maps.googleapis.com/maps/api/streetview?location=${imgLat},${imgLng}&size=600x400&key=AIzaSyAl7rJskwTxg3fIJ3wKhN_KT0emk1LlcI0`;
+  
+  
+}
+ 
 
   //console.log("PLACE_ID ", selectedRestaurant, " was clicked");
   // console.log("modal input Reviews", reviews)
@@ -62,7 +73,10 @@ function ModalInput({ selectedRestaurant, reviews }) {
         src={
           //null
          // selectedRestaurant.image
-         `https://maps.googleapis.com/maps/api/streetview?location=${imgLat},${imgLng}&size=600x400&key=AIzaSyAl7rJskwTxg3fIJ3wKhN_KT0emk1LlcI0`
+         selectedRestaurant.restaurantType === "dummy"
+         ? selectedRestaurant.image
+         : 
+         latLngImage
         }
         alt="image of restaurant"
       />

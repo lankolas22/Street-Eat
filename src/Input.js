@@ -6,6 +6,12 @@ function Input({ addNewRestaurant }) {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
 
+  function onClickOff() {
+    console.log("closed input");
+   // setInputState(null);
+    //console.log(selectedRestaurant)
+  }
+
   function onRestaurantInput() {
     //console.log("rName", name, "rAddress", address);
 
@@ -23,7 +29,7 @@ function Input({ addNewRestaurant }) {
     <article className="Input">
       <div className="inputPadding">
         <div
-          className="inputClose" //onClick={}
+          className="inputClose" onClick={onClickOff}
         >
           X
         </div>

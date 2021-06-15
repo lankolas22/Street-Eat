@@ -27,20 +27,6 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
     service = new window.google.maps.places.PlacesService(map);
     service.getDetails(reviewRequest, callback);
 
-////////////////////////////////////
-
-let imgLat = selectedRestaurant.geometry.location.lat();
-let imgLng = selectedRestaurant.geometry.location.lng();
-
-console.log(imgLat, imgLng);
-
-let imgRequest = {
-    location: {imgLat, imgLng},
-    size: "400x600",};
-
-    const streetviewService = new window.google.maps.StreetViewService();
-    streetviewService.getPanorama(imgRequest, callback);
-
 /////////////////////////////////////
 
   }

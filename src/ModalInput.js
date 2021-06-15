@@ -14,6 +14,8 @@ function ModalInput({ selectedRestaurant, reviews }) {
       : reviews;
   //console.log("restaurant reviews are", restaurantReviews);
   console.log("restaurant ", selectedRestaurant);
+  let imgLat = selectedRestaurant.geometry.location.lat();
+  let imgLng = selectedRestaurant.geometry.location.lng();
 
   //console.log("PLACE_ID ", selectedRestaurant, " was clicked");
   // console.log("modal input Reviews", reviews)
@@ -58,8 +60,9 @@ function ModalInput({ selectedRestaurant, reviews }) {
       <img
         className="modalImage"
         src={
-          null
-          //selectedRestaurant.photos[0]
+          //null
+         // selectedRestaurant.image
+         `https://maps.googleapis.com/maps/api/streetview?location=${imgLat},${imgLng}&size=600x400&key=AIzaSyAl7rJskwTxg3fIJ3wKhN_KT0emk1LlcI0`
         }
         alt="image of restaurant"
       />

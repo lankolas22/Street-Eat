@@ -7,7 +7,7 @@ import four from "./4.png";
 import five from "./5.png";
 import unrated from "./unrated.png";
 
-let latLngImage
+let latLngImage;
 
 function ModalInput({ selectedRestaurant, reviews }) {
   const restaurantReviews =
@@ -16,17 +16,12 @@ function ModalInput({ selectedRestaurant, reviews }) {
       : reviews;
   //console.log("restaurant reviews are", restaurantReviews);
   console.log("restaurant ", selectedRestaurant);
- if (selectedRestaurant.restaurantType !== "dummy") {
-  let imgLat = selectedRestaurant.geometry.location.lat();
-  let imgLng = selectedRestaurant.geometry.location.lng();
+  if (selectedRestaurant.restaurantType !== "dummy") {
+    let imgLat = selectedRestaurant.geometry.location.lat();
+    let imgLng = selectedRestaurant.geometry.location.lng();
 
-  latLngImage = 
-  
-  `https://maps.googleapis.com/maps/api/streetview?location=${imgLat},${imgLng}&size=600x400&key=AIzaSyAl7rJskwTxg3fIJ3wKhN_KT0emk1LlcI0`;
-  
-  
-}
- 
+    latLngImage = `https://maps.googleapis.com/maps/api/streetview?location=${imgLat},${imgLng}&size=600x400&key=AIzaSyAl7rJskwTxg3fIJ3wKhN_KT0emk1LlcI0`;
+  }
 
   //console.log("PLACE_ID ", selectedRestaurant, " was clicked");
   // console.log("modal input Reviews", reviews)
@@ -35,7 +30,7 @@ function ModalInput({ selectedRestaurant, reviews }) {
   // console.log(imgUrl);
 
   function convert(num) {
-    if (num < 1.5) {
+    if (num < 1.5 && num > 0) {
       return one;
     }
     if (num < 2.5 && num >= 1.5) {
@@ -72,11 +67,10 @@ function ModalInput({ selectedRestaurant, reviews }) {
         className="modalImage"
         src={
           //null
-         // selectedRestaurant.image
-         selectedRestaurant.restaurantType === "dummy"
-         ? selectedRestaurant.image
-         : 
-         latLngImage
+          // selectedRestaurant.image
+          selectedRestaurant.restaurantType === "dummy"
+            ? selectedRestaurant.image
+            : latLngImage
         }
         alt="image of restaurant"
       />
@@ -90,7 +84,9 @@ function ModalInput({ selectedRestaurant, reviews }) {
                 <img src={convert(rating.rating)} className="ratingStars"></img>
 
                 <br />
-                {`${rating.text}`}
+                {rating.text !== undefined
+                  ? `${rating.text}`
+                  : "reviews are currently unavailable for this restaurant"}
                 <br />
               </blockquote>
             </p>

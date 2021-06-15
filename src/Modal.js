@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ModalInput from "./ModalInput";
 
-
 function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
- // console.log("selectedRestaurant is", selectedRestaurant);
+  // console.log("selectedRestaurant is", selectedRestaurant);
   function onClickOff() {
     //console.log("closed");
     setSelectedRestaurant(null);
@@ -13,13 +12,9 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
   let service;
   const [reviews, setReviews] = useState([]);
 
- // console.log("selectedRestaurant", selectedRestaurant, selectedRestaurant.place_id);
+  // console.log("selectedRestaurant", selectedRestaurant, selectedRestaurant.place_id);
 
-  if (
-    selectedRestaurant.restaurantType !== "dummy"
-
-  ) {
-
+  if (selectedRestaurant.restaurantType !== "dummy") {
     let reviewRequest = {
       placeId: selectedRestaurant.place_id,
       fields: ["name", "rating", "price_level", "review"],
@@ -27,20 +22,19 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
     service = new window.google.maps.places.PlacesService(map);
     service.getDetails(reviewRequest, callback);
 
-/////////////////////////////////////
-
+    /////////////////////////////////////
   }
 
   // Checks that the PlacesServiceStatus is OK, and adds a marker
   // using the place ID and location from the PlacesService.
   function callback(results, status) {
     if (status == window.google.maps.places.PlacesServiceStatus.OK) {
-      console.log('results from reviews', results);
-      setReviews(results)
+      console.log("results from reviews", results);
+      setReviews(results);
     }
   }
 
-/* selectedRestaurant !== null */
+  /* selectedRestaurant !== null */
   if (true) {
     return (
       // if null change display to none otherwise display block and input to selectedRestaurant
@@ -55,12 +49,17 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
             ////////////////////////////////////////////////////////////////////////////////////////////////////////}
           }
           <div className="RestaurantReview">
-            <ModalInput reviews={reviews.reviews} selectedRestaurant= {selectedRestaurant} />
-            <h3 id="ratingDisclaimer"> PLEASE NOTE: ratings are rounded up or down to the nearest whole number</h3>
+            <ModalInput
+              reviews={reviews.reviews}
+              selectedRestaurant={selectedRestaurant}
+            />
+            <h3 id="ratingDisclaimer">
+              {" "}
+              PLEASE NOTE: ratings are rounded up or down to the nearest whole
+              number
+            </h3>
           </div>
-
         </div>
-
 
         {
           ////////////////////////////////////////////////////////////////////////////////////////////////////////}

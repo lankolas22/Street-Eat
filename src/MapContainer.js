@@ -4,7 +4,6 @@ import Modal from "./Modal";
 import Input from "./Input";
 import missing from "./missing.jpg";
 
-
 const containerStyle = {
   width: "65%",
   height: "625px",
@@ -18,7 +17,6 @@ function MapContainer({
   restaurants,
   addRestaurant,
   setSelectedRestaurant,
-  
 }) {
   //console.log("MapContainer function");
   const [center, setCenter] = useState(null);
@@ -34,7 +32,6 @@ function MapContainer({
   useEffect(() => {
     initialize();
   }, [mapState, center]);
-
 
   /////////////////////////////////////////////////
   function initialize() {
@@ -56,18 +53,15 @@ function MapContainer({
 
     service = new window.google.maps.places.PlacesService(mapState);
     service.nearbySearch(request, callback);
-    console.log("service is", service)
-
+    console.log("service is", service);
   }
   ///////////////////////////////////////////////
   function callback(results, status) {
     setRestaurants(results);
-    console.log("RESULTS ARE", results)
+    console.log("RESULTS ARE", results);
   }
 
-
   function getLocation() {
-
     //console.log("navigator.geolocation", navigator.geolocation);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
@@ -101,14 +95,14 @@ function MapContainer({
 
   //  SECTION FOR CREATING NEW USER SUBMITTED RESTAURANTS
 
- const addNewRestaurant = (name, address) => {
+  const addNewRestaurant = (name, address) => {
     //console.log("added restaurant");
 
     function placeIDGenerator(placeName) {
       let placeID = Math.floor(Math.random() * 10000000000);
-      let nameString = placeName.replace(/\s+/g, '')
-      placeID = nameString.substring(0, 8) + placeID ;
-      return placeID
+      let nameString = placeName.replace(/\s+/g, "");
+      placeID = nameString.substring(0, 8) + placeID;
+      return placeID;
     }
 
     let newRestaurant = {
@@ -121,14 +115,14 @@ function MapContainer({
         {
           ratingID: null,
           rating: null,
-          comment: "this submission is awaiting approval by our moderators and is not available right now.  Please try again later" 
-          
-        }],
-      ...newRestaurantLocation
+          comment:
+            "this submission is awaiting approval by our moderators and is not available right now.  Please try again later",
+        },
+      ],
+      ...newRestaurantLocation,
     };
     setAddRestaurantModal(false);
-    addRestaurant(newRestaurant)
-
+    addRestaurant(newRestaurant);
   };
   return (
     <>
@@ -137,10 +131,10 @@ function MapContainer({
           restaurants={restaurants}
           selectedRestaurant={selectedRestaurant}
           setSelectedRestaurant={setSelectedRestaurant}
-          map = {mapState}
+          map={mapState}
         />
       )}
-      {addRestaurantModal && <Input addNewRestaurant={addNewRestaurant} />}
+      {addRestaurantModal && <Input addNewRestaurant={addNewRestaurant} setSelectedRestaurant={setSelectedRestaurant} />}
 
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -148,10 +142,11 @@ function MapContainer({
         onRightClick={(e) => {
           let lat = e.latLng.lat();
           let lng = e.latLng.lng();
-         setNewRestaurantLocation({
-           lat, lng
-         })
-         setAddRestaurantModal(true);
+          setNewRestaurantLocation({
+            lat,
+            lng,
+          });
+          setAddRestaurantModal(true);
         }}
         zoom={16}
         onLoad={onMapLoad}
@@ -164,45 +159,55 @@ function MapContainer({
         />
 
         {/* the markers for the real restaurants */}
-        {restaurants && restaurants.filter((r)=> r.restaurantType !== "dummy" ).map((result) => (
-            <Marker
-              ////////
-              onClick={() => onClickModal(result)}
-              id={result}
-              ////////
-              position={{
-                lat: result.geometry === undefined ? result.location.lat : result.geometry.location.lat(),
-                lng: result.geometry === undefined ? result.location.lng : result.geometry.location.lng(),
-              }}
-              icon={
-                "http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"
-              }
-            />
-          ))}
+        {restaurants &&
+          restaurants
+            .filter((r) => r.restaurantType !== "dummy")
+            .map((result) => (
+              <Marker
+                ////////
+                onClick={() => onClickModal(result)}
+                id={result}
+                ////////
+                position={{
+                  lat:
+                    result.geometry === undefined
+                      ? result.location.lat
+                      : result.geometry.location.lat(),
+                  lng:
+                    result.geometry === undefined
+                      ? result.location.lng
+                      : result.geometry.location.lng(),
+                }}
+                icon={
+                  "http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"
+                }
+              />
+            ))}
         {/* the markers for the dummy restaurants */}
-        {restaurants && restaurants.filter((r)=> r.restaurantType === "dummy" ).map((result) => (
-    
-            <Marker
-              ////////
-              onClick={() => onClickModal(result)}
-              id={result}
-              /*
+        {restaurants &&
+          restaurants
+            .filter((r) => r.restaurantType === "dummy")
+            .map((result) => (
+              <Marker
+                ////////
+                onClick={() => onClickModal(result)}
+                id={result}
+                /*
               id={restaurant.place_id} */
-              ////////
-              position={{
-                lat: result.lat,
-                lng: result.lng,
-              }}
-              icon={
-                "http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"
-              }
-            />
-          ))}
+                ////////
+                position={{
+                  lat: result.lat,
+                  lng: result.lng,
+                }}
+                icon={
+                  "http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"
+                }
+              />
+            ))}
         <></>
-      </GoogleMap> 
+      </GoogleMap>
     </>
   );
 }
 
 export default React.memo(MapContainer);
-

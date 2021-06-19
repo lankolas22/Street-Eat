@@ -122,6 +122,7 @@ function MapContainer({
       ...newRestaurantLocation,
     };
     setAddRestaurantModal(false);
+    
     addRestaurant(newRestaurant);
   };
   return (
@@ -134,12 +135,14 @@ function MapContainer({
           map={mapState}
         />
       )}
-      {addRestaurantModal && <Input addNewRestaurant={addNewRestaurant} setSelectedRestaurant={setSelectedRestaurant} />}
+      {addRestaurantModal && <Input addNewRestaurant={addNewRestaurant} setAddRestaurantModal={setAddRestaurantModal} />}
 
       <GoogleMap
+        
         mapContainerStyle={containerStyle}
         center={center}
         onRightClick={(e) => {
+
           let lat = e.latLng.lat();
           let lng = e.latLng.lng();
           setNewRestaurantLocation({

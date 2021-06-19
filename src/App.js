@@ -13,7 +13,7 @@ function App() {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   return (
-    <div className="App">
+    <div className="App" >
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="MainLogoText">
@@ -26,7 +26,7 @@ function App() {
           add it! &nbsp;
         </p>
       </header>
-      <div className="container">
+      <div className="container" onContextMenu={(e)=> e.preventDefault()}>
         <MapContainer
           setSelectedRestaurant={setSelectedRestaurant}
           restaurants={restaurants}

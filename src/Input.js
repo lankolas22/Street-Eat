@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import shock from "./shock.jpg";
 
-function Input({ addNewRestaurant , setSelectedRestaurant}) {
+function Input({ addNewRestaurant , setAddRestaurantModal}) {
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
 
   function onClickOff() {
     console.log("closed input");
-    setSelectedRestaurant(null);
+    setAddRestaurantModal(false);
    // setInputState(null);
     //console.log(selectedRestaurant)
   }

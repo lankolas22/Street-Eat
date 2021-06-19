@@ -15,7 +15,7 @@ function ModalInput({ selectedRestaurant, reviews }) {
       ? selectedRestaurant.ratings
       : reviews;
   console.log("restaurant reviews are", reviews);
- // console.log("restaurant ", selectedRestaurant);
+  // console.log("restaurant ", selectedRestaurant);
   if (selectedRestaurant.restaurantType !== "dummy") {
     let imgLat = selectedRestaurant.geometry.location.lat();
     let imgLng = selectedRestaurant.geometry.location.lng();
@@ -75,7 +75,7 @@ function ModalInput({ selectedRestaurant, reviews }) {
         alt="image of restaurant"
       />
 
-      {restaurantReviews &&
+      {restaurantReviews ? (
         restaurantReviews.map((rating) => (
           <div>
             <p key={rating.key}>
@@ -86,15 +86,17 @@ function ModalInput({ selectedRestaurant, reviews }) {
                 {console.log("reviews are ", reviews)}
 
                 <br />
-                {rating.text !== undefined  || reviews !== undefined
-                  ? `${rating.text}`
-                  : "reviews are currently unavailable for this restaurant"}
 
                 <br />
               </blockquote>
             </p>
           </div>
-        ))}
+        ))
+      ) : (
+        <div>
+          <br /> "reviews are currently unavailable for this restaurant"</div>
+      )}
+
       <br />
     </div>
   );

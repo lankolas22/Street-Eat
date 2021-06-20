@@ -4,11 +4,9 @@ import "./App.css";
 import MapContainer from "./MapContainer";
 import { restaurantData } from "./Reviews";
 import Side from "./Side";
-//import Modal from "./Modal";
 
 function App() {
   const [restaurants, setRestaurants] = useState(restaurantData);
-
   //    [    current state  , function how to change state ] = initial state
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 

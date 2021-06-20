@@ -86,7 +86,7 @@ function ModalInput({ selectedRestaurant, reviews }) {
                 {console.log("reviews are ", reviews)}
 
                 <br />
-
+                {rating.text}
                 <br />
               </blockquote>
             </p>

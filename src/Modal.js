@@ -2,27 +2,22 @@ import React, { useState } from "react";
 import ModalInput from "./ModalInput";
 
 function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
-  // console.log("selectedRestaurant is", selectedRestaurant);
   function onClickOff() {
-    //console.log("closed");
     setSelectedRestaurant(null);
-    //console.log(selectedRestaurant)
   }
 
   let service;
   const [reviews, setReviews] = useState([]);
-
-  // console.log("selectedRestaurant", selectedRestaurant, selectedRestaurant.place_id);
-
   if (selectedRestaurant.restaurantType !== "dummy") {
     let reviewRequest = {
       placeId: selectedRestaurant.place_id,
-      fields: ["name", "rating", "price_level", "review"],
+      fields: ["rating", "review"],
+          // "price_level"
+          // "name",
     };
+
     service = new window.google.maps.places.PlacesService(map);
     service.getDetails(reviewRequest, callback);
-
-    /////////////////////////////////////
   }
 
   // Checks that the PlacesServiceStatus is OK, and adds a marker
@@ -34,25 +29,21 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
     }
   }
 
-  /* selectedRestaurant !== null */
   if (true) {
     return (
-      // if null change display to none otherwise display block and input to selectedRestaurant
 
-      <article className="Modal">
+<article className="Modal">
         <div className="modalPadding">
           <div className="modalClose" onClick={onClickOff}>
             X
           </div>
-
-          {
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////}
-          }
           <div className="RestaurantReview">
             <ModalInput
               reviews={reviews.reviews}
               selectedRestaurant={selectedRestaurant}
+              setSelectedRestaurant={setSelectedRestaurant}
             />
+
             <h3 id="ratingDisclaimer">
               {" "}
               PLEASE NOTE: ratings are rounded up or down to the nearest whole
@@ -66,8 +57,6 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
         }
       </article>
     );
-  } else {
-    return null;
   }
 }
 

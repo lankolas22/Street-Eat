@@ -38,6 +38,18 @@
   }
 }
 
+.userRatingInput li {
+  display: inline-block;
+
+}
+.userRatingInput ul {
+ padding:0;
+
+}
+.reviewSubmitButton {
+  font-size: 1.2rem;
+}
+
 .TagLine {
   font-family: "Josefin Slab", serif;
   font-size: 1.4em;
@@ -53,11 +65,6 @@
 }
 
 .RestaurantList {
-  /* 
-font-family: 'Josefin Slab', serif;
-font-family: 'Montserrat', sans-serif;
-font-family: 'Lobster', cursive;
-font-family: 'Monoton', cursive; */
   font-family: "Lobster", cursive;
   font-size: 1.2em;
   overflow-y: scroll;
@@ -79,6 +86,30 @@ font-family: 'Monoton', cursive; */
   margin: 0.3rem;
   background-color: #d5ffc2;
   border-radius: 5px;
+}
+.addReviewOption {
+  border-radius: 20px;
+  width:80%;
+  
+  background-color: cornsilk;
+  padding: 10px 0;
+  border: solid #282c34 2px;
+  font-family: "ABeeZee", sans-serif;
+  font-size: 1.2rem;
+  align-items: center;
+}
+
+/* .addReviewMessage {
+  display: block;
+}
+
+.addReview {
+  display:none;
+
+
+} */
+.labelReviewText {
+  text-align: center;
 }
 
 .priceFilter li {
@@ -129,11 +160,9 @@ font-family: 'Monoton', cursive; */
   padding: 4px;
  
 }
-/*
-#inputForm {}
-*/
 .RestaurantReview {
   height: 75%;
+  align-items: center;
 }
 
 blockquote {
@@ -194,11 +223,6 @@ blockquote {
   font-size: 1.8rem;
   font-weight: bolder;
 }
-/*
-hr {
-  border-radius: 5px;
-  border: 2px solid;
-} */
 
 .itemDivider {
   width: 75%;
@@ -223,11 +247,6 @@ hr {
   font-family: "Josefin Slab", serif;
 }
 
-/*
-.AsideHeader {
-
-}   
-*/
 p {
   color: #282c34;
 }
@@ -248,8 +267,6 @@ li {
 #ratingDisclaimer {
   position: relative;
   bottom: 0px;
-
-
   padding: 10px;
   font-family: "ABeeZee", sans-serif;
 }

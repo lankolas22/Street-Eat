@@ -9,7 +9,6 @@ const containerStyle = {
   height: "625px",
 };
 let service;
-let infowindow;
 /////////////////////////////////////////////////////
 function MapContainer({
   selectedRestaurant,
@@ -17,14 +16,14 @@ function MapContainer({
   restaurants,
   addRestaurant,
   setSelectedRestaurant,
+  addNewRatingReview
 }) {
-  //console.log("MapContainer function");
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);
   const [addRestaurantModal, setAddRestaurantModal] = useState(null);
   const [newRestaurantLocation, setNewRestaurantLocation] = useState({});
   ///////////////////////////////////////////////////
-
+ 
   useEffect(() => {
     getLocation();
   }, []);
@@ -35,14 +34,11 @@ function MapContainer({
 
   /////////////////////////////////////////////////
   function initialize() {
-    //console.log("initialize function");
-    //console.log("center", center);
     if (!mapState || !center) {
       return;
     }
 
     const place = new window.google.maps.LatLng(center.lat, center.lng);
-    //console.log("after center is set");
 
     //1800 a good number
     let request = {
@@ -53,16 +49,15 @@ function MapContainer({
 
     service = new window.google.maps.places.PlacesService(mapState);
     service.nearbySearch(request, callback);
-    console.log("service is", service);
+ 
   }
   ///////////////////////////////////////////////
-  function callback(results, status) {
+  function callback(results) {
     setRestaurants(results);
     console.log("RESULTS ARE", results);
   }
 
   function getLocation() {
-    //console.log("navigator.geolocation", navigator.geolocation);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -71,8 +66,6 @@ function MapContainer({
   }
   ///////////////////////////////////////////////
   function showPosition(position) {
-    //console.log("showPosition function");
-    //console.log("setting center");
     setCenter({
       lat: position.coords.latitude,
       lng: position.coords.longitude,
@@ -83,27 +76,24 @@ function MapContainer({
   }
 
   const onMapLoad = (map) => {
-    //console.log('map', map);
     setMapState(map);
   };
-  //console.log("map is loading");
 
   function onClickModal(id) {
     setSelectedRestaurant(id);
-    //    console.log(id);
   }
 
   //  SECTION FOR CREATING NEW USER SUBMITTED RESTAURANTS
 
   const addNewRestaurant = (name, address) => {
-    //console.log("added restaurant");
-
     function placeIDGenerator(placeName) {
       let placeID = Math.floor(Math.random() * 10000000000);
       let nameString = placeName.replace(/\s+/g, "");
       placeID = nameString.substring(0, 8) + placeID;
       return placeID;
     }
+
+    
 
     let newRestaurant = {
       name: name,
@@ -122,7 +112,7 @@ function MapContainer({
       ...newRestaurantLocation,
     };
     setAddRestaurantModal(false);
-    
+
     addRestaurant(newRestaurant);
   };
   return (
@@ -132,17 +122,21 @@ function MapContainer({
           restaurants={restaurants}
           selectedRestaurant={selectedRestaurant}
           setSelectedRestaurant={setSelectedRestaurant}
+          addNewRatingReview={addNewRatingReview}
           map={mapState}
         />
       )}
-      {addRestaurantModal && <Input addNewRestaurant={addNewRestaurant} setAddRestaurantModal={setAddRestaurantModal} />}
+      {addRestaurantModal && (
+        <Input
+          addNewRestaurant={addNewRestaurant}
+          setAddRestaurantModal={setAddRestaurantModal}
+        />
+      )}
 
       <GoogleMap
-        
         mapContainerStyle={containerStyle}
         center={center}
         onRightClick={(e) => {
-
           let lat = e.latLng.lat();
           let lng = e.latLng.lng();
           setNewRestaurantLocation({
@@ -156,7 +150,6 @@ function MapContainer({
       >
         {/* Marker for the user */}
         <Marker
-          //onLoad={(marker) => {}}
           position={center}
           icon={"http://maps.google.com/mapfiles/kml/paddle/red-stars.png"}
         />
@@ -195,8 +188,6 @@ function MapContainer({
                 ////////
                 onClick={() => onClickModal(result)}
                 id={result}
-                /*
-              id={restaurant.place_id} */
                 ////////
                 position={{
                   lat: result.lat,

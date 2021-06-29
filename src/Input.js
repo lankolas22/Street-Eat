@@ -1,83 +1,67 @@
 import React, { useState } from "react";
 import shock from "./shock.jpg";
 
-function Input({ addNewRestaurant , setAddRestaurantModal}) {
-
+function Input({ addNewRestaurant, setAddRestaurantModal }) {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
 
   function onClickOff() {
     console.log("closed input");
     setAddRestaurantModal(false);
-   // setInputState(null);
-    //console.log(selectedRestaurant)
   }
 
   function onRestaurantInput() {
-    //console.log("rName", name, "rAddress", address);
-
-    addNewRestaurant(
-      name,
-      address
-    );
-
+    addNewRestaurant(name, address);
   }
 
   if (true) {
-  return (
+    return (
+      <article className="Input">
+        <div className="inputPadding">
+          <div className="inputClose" onClick={onClickOff}>
+            X
+          </div>
 
-    <article className="Input">
-      <div className="inputPadding">
-        <div
-          className="inputClose" onClick={onClickOff}
-        >
-          X
+          <div className="inputBody">
+            <h1 id="LobsterH1">Is your favourite takeaway not here!?</h1>
+            <img src={shock} alt="shocked face" width="300px" />
+            <h1>No worries! Add it below for review</h1>
+            <form id="inputForm">
+              <label for="rName" className="labelText">
+                Restaurant Name: &nbsp;
+              </label>
+              <input
+                type="text"
+                id="rName"
+                name="rName"
+                placeholder="Enter Restaurant Name Here"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <br />
+              <br />
+              <label for="rAddress" className="labelText">
+                Restaurant Address: &nbsp;
+              </label>
+              <input
+                type="text"
+                id="rAddress"
+                name="rAddress"
+                placeholder="Enter Restaurant Address Here"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+              <br />
+              <br />
+              <br />
+
+              <input type="button" value="Submit" onClick={onRestaurantInput} />
+            </form>
+          </div>
         </div>
-
-        <div className="inputBody">
-          <h1 id="LobsterH1">Is your favourite takeaway not here!?</h1>
-          <img src={shock} alt="shocked face" width="300px" />
-          <h1>No worries! Add it below for review</h1>
-          <form id="inputForm">
-            <label for="rName" className="labelText">
-              Restaurant Name: &nbsp;
-            </label>
-            <input
-              type="text"
-              id="rName"
-              name="rName"
-              placeholder="Enter Restaurant Name Here"
-              value={name}
-              onChange={(e)=>setName(e.target.value)}
-            />
-            <br />
-            <br />
-            <label for="rAddress" className="labelText">
-              Restaurant Address: &nbsp;
-            </label>
-            <input
-              type="text"
-              id="rAddress"
-              name="rAddress"
-              placeholder="Enter Restaurant Address Here"
-              value={address}
-              onChange={(e)=>setAddress(e.target.value)}
-            />
-            <br />
-            <br />
-            <br />
-
-            <input type="button" value="Submit" onClick={onRestaurantInput} />
-          </form>
-        </div>
-      </div>
-    </article>
-  );
-
-} else {
-  return null;
+      </article>
+    );
+  }
 }
-}
-
 
 export default Input;

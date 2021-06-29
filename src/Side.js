@@ -21,7 +21,6 @@ function Side({ restaurants, setSelectedRestaurant }) {
     filteredRestaurants = fourPlusArr;
   }
   if (filterValue === "threePlus") {
-   // console.log("three Plus !");
     threePlusArr = [];
     for (let i = 0; i < restaurants.length; i++) {
       let ratingNum = restaurants[i].rating;

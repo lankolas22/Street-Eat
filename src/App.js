@@ -7,9 +7,19 @@ import Side from "./Side";
 
 function App() {
   const [restaurants, setRestaurants] = useState(restaurantData);
-  //    [    current state  , function how to change state ] = initial state
+  //    [current state, function how to change state] = initial state
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+console.log(restaurants);
 
+
+
+// const addReviewToRestaurant = (restaurantPlaceId, rating, review) => {
+//   const selectedRestaurant = restaurants.find(restaurant.place_id === restaurantPlaceId)
+
+
+
+
+// }
   return (
     <div className="App" >
       <header className="App-header">
@@ -35,6 +45,7 @@ function App() {
           setRestaurants={(restaurants) => {
             setRestaurants([...restaurantData, ...restaurants]);
           }}
+         // addNewRatingReview={addNewRatingReview}
         />
         <Side
           restaurants={restaurants}

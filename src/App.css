@@ -90,7 +90,7 @@
 .addReviewOption {
   border-radius: 20px;
   width:80%;
-  
+  margin: 0 auto;
   background-color: cornsilk;
   padding: 10px 0;
   border: solid #282c34 2px;

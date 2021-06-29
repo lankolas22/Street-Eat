@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalInput from "./ModalInput";
 
-function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
+function Modal({ selectedRestaurant, setSelectedRestaurant, map, setButtonBottom, setButtonTop }) {
   function onClickOff() {
     setSelectedRestaurant(null);
   }
@@ -42,6 +42,8 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map }) {
               reviews={reviews.reviews}
               selectedRestaurant={selectedRestaurant}
               setSelectedRestaurant={setSelectedRestaurant}
+              setButtonBottom={setButtonBottom}
+              setButtonTop={setButtonTop}
             />
 
             <h3 id="ratingDisclaimer">

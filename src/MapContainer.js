@@ -16,7 +16,9 @@ function MapContainer({
   restaurants,
   addRestaurant,
   setSelectedRestaurant,
-  addNewRatingReview
+  addNewRatingReview,
+  setButtonBottom,
+  setButtonTop
 }) {
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);
@@ -124,6 +126,8 @@ function MapContainer({
           setSelectedRestaurant={setSelectedRestaurant}
           addNewRatingReview={addNewRatingReview}
           map={mapState}
+          setButtonBottom={setButtonBottom}
+          setButtonTop={setButtonTop}
         />
       )}
       {addRestaurantModal && (

@@ -10,6 +10,8 @@ function App() {
   //    [current state, function how to change state] = initial state
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 console.log(restaurants);
+const [buttonTop, setButtonTop] = useState(true);
+const [buttonBottom, setButtonBottom] = useState(null);
 
 
 
@@ -46,6 +48,8 @@ console.log(restaurants);
             setRestaurants([...restaurantData, ...restaurants]);
           }}
          // addNewRatingReview={addNewRatingReview}
+         setButtonBottom={setButtonBottom}
+         setButtonTop={setButtonTop}
         />
         <Side
           restaurants={restaurants}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import RestaurantItem from "./RestaurantItem";
 import Filter from "./Filter";
 
-function Side({ restaurants, setSelectedRestaurant }) {
+function Side({ restaurants, setSelectedRestaurant, setButtonBottom, setButtonTop }) {
 
   const [filterValue, setFilterValue] = useState(null);
   let threePlusArr = [];
@@ -48,6 +48,12 @@ function Side({ restaurants, setSelectedRestaurant }) {
             <RestaurantItem
               restaurant={restaurants}
               setSelectedRestaurant={setSelectedRestaurant}
+
+              //
+              setButtonBottom={setButtonBottom}
+              setButtonTop={setButtonTop}
+
+              //
             />
           );
         })}

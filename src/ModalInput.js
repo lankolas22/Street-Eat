@@ -14,11 +14,14 @@ function ModalInput({
   setSelectedRestaurant,
   reviews,
   addNewRatingReview,
+  setButtonBottom,
+  setButtonTop
 }) {
-  const [buttonTop, setButtonTop] = useState(true);
-  const [buttonBottom, setButtonBottom] = useState(null);
+
   // const [newUserRating, setNewUserRating] = useState(null);
   const [newUserReview, setNewUserReview] = useState("");
+
+ 
 
   const restaurantReviews =
     selectedRestaurant.restaurantType === "dummy"
@@ -140,8 +143,7 @@ function ModalInput({
               </label>
               <br />
               <br />
-              {/*      
-              onChange={(e) => setRating(e.target.value) }*/}
+
               <div className="userRatingInput">
                 <ul>
                   <li>
@@ -150,7 +152,7 @@ function ModalInput({
                       id="1"
                       name="userRating"
                       value={1}
-                      onChange={(e) => submitNewUserRating(e.target.value)}
+        //              onChange={(e) => submitNewUserRating(e.target.value)}
                     />
                       <label for="one">1</label>
                   </li>{" "}
@@ -160,7 +162,7 @@ function ModalInput({
                       id="2"
                       name="userRating"
                       value={2}
-                      onChange={(e) => submitNewUserRating(e.target.value)}
+        //              onChange={(e) => submitNewUserRating(e.target.value)}
                     />
                       <label for="two">2</label>
                   </li>
@@ -172,7 +174,7 @@ function ModalInput({
                       id="3"
                       name="userRating"
                       value={3}
-                      onChange={(e) => submitNewUserRating(e.target.value)}
+        //              onChange={(e) => submitNewUserRating(e.target.value)}
                     />
                       <label for="three">3</label>
                   </li>
@@ -184,7 +186,7 @@ function ModalInput({
                       id="4"
                       name="userRating"
                       value={4}
-                      onChange={(e) => submitNewUserRating(e.target.value)}
+        //              onChange={(e) => submitNewUserRating(e.target.value)}
                     />
                       <label for="four">4</label>
                   </li>
@@ -195,7 +197,7 @@ function ModalInput({
                       id="5"
                       name="userRating"
                       value={5}
-                      onChange={(e) => submitNewUserRating(e.target.value)}
+        //              onChange={(e) => submitNewUserRating(e.target.value)}
                     />
                       <label for="one">5</label>
                   </li>
@@ -213,7 +215,7 @@ function ModalInput({
                 value={newUserReview}
                 rows="4"
                 cols="35"
-                onChange={(e) => submitNewUserReview(e.target.value)}
+        //        onChange={(e) => submitNewUserReview(e.target.value)}
               >
                 {" "}
               </textarea>
@@ -224,7 +226,7 @@ function ModalInput({
                   type="button"
                   className="reviewSubmitButton"
                   value="Submit"
-                  onClick={submitNewReviewRating(submitNewUserReview, submitNewUserRating)}
+        //          onClick={submitNewReviewRating(submitNewUserReview, submitNewUserRating)}
                 />
               }
             </form>

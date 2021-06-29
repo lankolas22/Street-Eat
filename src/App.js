@@ -10,8 +10,8 @@ function App() {
   //    [current state, function how to change state] = initial state
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 console.log(restaurants);
-const [buttonTop, setButtonTop] = useState(true);
-const [buttonBottom, setButtonBottom] = useState(null);
+// const [buttonTop, setButtonTop] = useState(true);
+// const [buttonBottom, setButtonBottom] = useState(null);
 
 
 
@@ -48,8 +48,8 @@ const [buttonBottom, setButtonBottom] = useState(null);
             setRestaurants([...restaurantData, ...restaurants]);
           }}
          // addNewRatingReview={addNewRatingReview}
-         setButtonBottom={setButtonBottom}
-         setButtonTop={setButtonTop}
+        //  setButtonBottom={setButtonBottom}
+        //  setButtonTop={setButtonTop}
         />
         <Side
           restaurants={restaurants}

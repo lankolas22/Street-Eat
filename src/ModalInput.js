@@ -14,13 +14,14 @@ function ModalInput({
   setSelectedRestaurant,
   reviews,
   addNewRatingReview,
-  setButtonBottom,
-  setButtonTop
+  // setButtonBottom,
+  // setButtonTop
 }) {
 
   // const [newUserRating, setNewUserRating] = useState(null);
   const [newUserReview, setNewUserReview] = useState("");
-
+  const [buttonTop, setButtonTop] = useState(true);
+  const [buttonBottom, setButtonBottom] = useState(null);
  
 
   const restaurantReviews =
@@ -67,14 +68,18 @@ function ModalInput({
     setButtonBottom(true);
   }
 
-  function submitNewReviewRating(submitNewUserRating, submitNewUserReview) {
+  function submitNewReviewRating(
+    //submitNewUserRating, 
+    submitNewUserReview) {
     console.log("review submitted");
     setButtonTop(true);
     setButtonBottom(null);
-
-    addNewRatingReview(submitNewUserReview, submitNewUserRating);
-
+    addNewRatingReview(
+      submitNewUserReview 
+      //,submitNewUserRating
+      );
     setSelectedRestaurant(null);
+ 
   }
 
   return (
@@ -215,7 +220,7 @@ function ModalInput({
                 value={newUserReview}
                 rows="4"
                 cols="35"
-        //        onChange={(e) => submitNewUserReview(e.target.value)}
+                onChange={(e) => newUserReview(e.target.value)}
               >
                 {" "}
               </textarea>
@@ -226,7 +231,10 @@ function ModalInput({
                   type="button"
                   className="reviewSubmitButton"
                   value="Submit"
-        //          onClick={submitNewReviewRating(submitNewUserReview, submitNewUserRating)}
+                  onClick={submitNewReviewRating(
+                    newUserReview
+                    //, submitNewUserRating
+                    )}
                 />
               }
             </form>

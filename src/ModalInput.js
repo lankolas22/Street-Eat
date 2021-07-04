@@ -14,6 +14,7 @@ function ModalInput({
   setSelectedRestaurant,
   reviews,
   addNewRatingReview,
+  addReviewToRestaurant
   // setButtonBottom,
   // setButtonTop
 }) {
@@ -28,7 +29,7 @@ function ModalInput({
     selectedRestaurant.restaurantType === "dummy"
       ? selectedRestaurant.ratings
       : reviews;
-  console.log("restaurant reviews are", reviews);
+ // console.log("restaurant reviews are", reviews);
   if (selectedRestaurant.restaurantType !== "dummy") {
     let imgLat = selectedRestaurant.geometry.location.lat();
     let imgLng = selectedRestaurant.geometry.location.lng();
@@ -74,10 +75,11 @@ function ModalInput({
     console.log("review submitted");
     setButtonTop(true);
     setButtonBottom(null);
-    addNewRatingReview(
-      submitNewUserReview 
-      //,submitNewUserRating
-      );
+    addReviewToRestaurant(selectedRestaurant.place_id, '4', submitNewUserReview)
+    // addNewRatingReview(
+    //   submitNewUserReview 
+    //   //,submitNewUserRating
+    //   );
     setSelectedRestaurant(null);
  
   }
@@ -105,8 +107,8 @@ function ModalInput({
               {""}
               <blockquote>
                 <img src={convert(rating.rating)} className="ratingStars"></img>
-                {console.log("rating.text is", rating.text)}
-                {console.log("reviews are ", reviews)}
+                {/* {console.log("rating.text is", rating.text)}
+                {console.log("reviews are ", reviews)} */}
 
                 <br />
                 {rating.text}
@@ -220,7 +222,7 @@ function ModalInput({
                 value={newUserReview}
                 rows="4"
                 cols="35"
-                onChange={(e) => newUserReview(e.target.value)}
+                onChange={(e) => setNewUserReview(e.target.value)}
               >
                 {" "}
               </textarea>
@@ -231,7 +233,7 @@ function ModalInput({
                   type="button"
                   className="reviewSubmitButton"
                   value="Submit"
-                  onClick={submitNewReviewRating(
+                  onClick={() => submitNewReviewRating(
                     newUserReview
                     //, submitNewUserRating
                     )}

@@ -16,7 +16,7 @@ function MapContainer({
   restaurants,
   addRestaurant,
   setSelectedRestaurant,
-  addNewRatingReview,
+  addReviewToRestaurant,
   setButtonBottom,
   setButtonTop
 }) {
@@ -56,7 +56,7 @@ function MapContainer({
   ///////////////////////////////////////////////
   function callback(results) {
     setRestaurants(results);
-    console.log("RESULTS ARE", results);
+   // console.log("RESULTS ARE", results);
   }
 
   function getLocation() {
@@ -124,10 +124,10 @@ function MapContainer({
           restaurants={restaurants}
           selectedRestaurant={selectedRestaurant}
           setSelectedRestaurant={setSelectedRestaurant}
-          addNewRatingReview={addNewRatingReview}
+          addReviewToRestaurant={addReviewToRestaurant}
           map={mapState}
-          setButtonBottom={setButtonBottom}
-          setButtonTop={setButtonTop}
+          // setButtonBottom={setButtonBottom}
+          // setButtonTop={setButtonTop}
         />
       )}
       {addRestaurantModal && (

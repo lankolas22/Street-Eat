@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import ModalInput from "./ModalInput";
 
-function Modal({ selectedRestaurant, setSelectedRestaurant, map, setButtonBottom, setButtonTop }) {
+function Modal({
+  selectedRestaurant,
+  setSelectedRestaurant,
+  map,
+  addReviewToRestaurant,
+  setButtonBottom,
+  setButtonTop,
+}) {
   function onClickOff() {
     setSelectedRestaurant(null);
   }
@@ -12,8 +19,8 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map, setButtonBottom
     let reviewRequest = {
       placeId: selectedRestaurant.place_id,
       fields: ["rating", "review"],
-          // "price_level"
-          // "name",
+      // "price_level"
+      // "name",
     };
 
     service = new window.google.maps.places.PlacesService(map);
@@ -24,15 +31,16 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map, setButtonBottom
   // using the place ID and location from the PlacesService.
   function callback(results, status) {
     if (status == window.google.maps.places.PlacesServiceStatus.OK) {
-      console.log("results from reviews", results);
+      // console.log("results from reviews", results);
+      selectedRestaurant.reviews = results.reviews;
+      console.log("updated with reviews restaurant", selectedRestaurant);
       setReviews(results);
     }
   }
 
   if (true) {
     return (
-
-<article className="Modal">
+      <article className="Modal">
         <div className="modalPadding">
           <div className="modalClose" onClick={onClickOff}>
             X
@@ -42,8 +50,9 @@ function Modal({ selectedRestaurant, setSelectedRestaurant, map, setButtonBottom
               reviews={reviews.reviews}
               selectedRestaurant={selectedRestaurant}
               setSelectedRestaurant={setSelectedRestaurant}
-              setButtonBottom={setButtonBottom}
-              setButtonTop={setButtonTop}
+              addReviewToRestaurant={addReviewToRestaurant}
+              // setButtonBottom={setButtonBottom}
+              // setButtonTop={setButtonTop}
             />
 
             <h3 id="ratingDisclaimer">

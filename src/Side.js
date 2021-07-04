@@ -48,8 +48,6 @@ function Side({ restaurants, setSelectedRestaurant, setButtonBottom, setButtonTo
             <RestaurantItem
               restaurant={restaurants}
               setSelectedRestaurant={setSelectedRestaurant}
-
-              //
               setButtonBottom={setButtonBottom}
               setButtonTop={setButtonTop}
 

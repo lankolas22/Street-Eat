@@ -1,13 +1,9 @@
 import React from "react";
 import "./App.css";
 
-function RestaurantItem({ restaurant, setSelectedRestaurant
-  , setButtonBottom, setButtonTop 
-}) {
+function RestaurantItem({ restaurant, setSelectedRestaurant}) {
   function onClick() {
     setSelectedRestaurant(restaurant);
-    // setButtonTop(true);
-    // setButtonBottom(null);
   }
   return (
     <div className="restaurantItem" onClick={onClick} id={restaurant.place_id}>

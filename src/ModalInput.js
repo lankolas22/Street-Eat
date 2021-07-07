@@ -15,8 +15,7 @@ function ModalInput({
   reviews,
   addNewRatingReview,
   addReviewToRestaurant,
-  // setButtonBottom,
-  // setButtonTop
+
 }) {
   // const [newUserRating, setNewUserRating] = useState(null);
   const [newUserReview, setNewUserReview] = useState("");
@@ -24,10 +23,14 @@ function ModalInput({
   const [buttonTop, setButtonTop] = useState(true);
   const [buttonBottom, setButtonBottom] = useState(null);
 
+  
+  // const restaurantReviews = selectedRestaurant.reviews;
+
+
   const restaurantReviews =
     selectedRestaurant.restaurantType === "dummy"
       ? selectedRestaurant.ratings
-      : reviews;
+      : selectedRestaurant.reviews;
 
   if (selectedRestaurant.restaurantType !== "dummy") {
     let imgLat = selectedRestaurant.geometry.location.lat();
@@ -73,7 +76,7 @@ function ModalInput({
     setButtonBottom(null);
     addReviewToRestaurant(
       selectedRestaurant.place_id,
-      "4",
+      newRating,
       submitNewUserReview
     );
 

@@ -15,7 +15,7 @@ function Modal({
 
   let service;
   const [reviews, setReviews] = useState([]);
-  if (selectedRestaurant.restaurantType !== "dummy") {
+  if (selectedRestaurant.restaurantType !== "dummy" && !selectedRestaurant.reviews) {
     let reviewRequest = {
       placeId: selectedRestaurant.place_id,
       fields: ["rating", "review"],
@@ -33,7 +33,7 @@ function Modal({
     if (status == window.google.maps.places.PlacesServiceStatus.OK) {
       // console.log("results from reviews", results);
       selectedRestaurant.reviews = results.reviews;
-      console.log("updated with reviews restaurant", selectedRestaurant);
+     // console.log("updated with reviews restaurant", selectedRestaurant);
       setReviews(results);
     }
   }

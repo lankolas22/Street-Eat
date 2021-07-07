@@ -16,9 +16,7 @@ function MapContainer({
   restaurants,
   addRestaurant,
   setSelectedRestaurant,
-  addReviewToRestaurant,
-  setButtonBottom,
-  setButtonTop
+  addReviewToRestaurant
 }) {
   const [center, setCenter] = useState(null);
   const [mapState, setMapState] = useState(null);

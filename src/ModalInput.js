@@ -14,22 +14,21 @@ function ModalInput({
   setSelectedRestaurant,
   reviews,
   addNewRatingReview,
-  addReviewToRestaurant
+  addReviewToRestaurant,
   // setButtonBottom,
   // setButtonTop
 }) {
-
   // const [newUserRating, setNewUserRating] = useState(null);
   const [newUserReview, setNewUserReview] = useState("");
+  const [newRating, setNewRating] = useState(null);
   const [buttonTop, setButtonTop] = useState(true);
   const [buttonBottom, setButtonBottom] = useState(null);
- 
 
   const restaurantReviews =
     selectedRestaurant.restaurantType === "dummy"
       ? selectedRestaurant.ratings
       : reviews;
- // console.log("restaurant reviews are", reviews);
+
   if (selectedRestaurant.restaurantType !== "dummy") {
     let imgLat = selectedRestaurant.geometry.location.lat();
     let imgLng = selectedRestaurant.geometry.location.lng();
@@ -64,24 +63,21 @@ function ModalInput({
   }
 
   function expandInput() {
-    console.log("clicked");
     setButtonTop(null);
     setButtonBottom(true);
   }
 
-  function submitNewReviewRating(
-    //submitNewUserRating, 
-    submitNewUserReview) {
-    console.log("review submitted");
+  function submitNewReviewRating(submitNewUserReview) {
+    console.log(newRating, " out of five!  Comment: ", newUserReview);
     setButtonTop(true);
     setButtonBottom(null);
-    addReviewToRestaurant(selectedRestaurant.place_id, '4', submitNewUserReview)
-    // addNewRatingReview(
-    //   submitNewUserReview 
-    //   //,submitNewUserRating
-    //   );
+    addReviewToRestaurant(
+      selectedRestaurant.place_id,
+      "4",
+      submitNewUserReview
+    );
+
     setSelectedRestaurant(null);
- 
   }
 
   return (
@@ -107,8 +103,6 @@ function ModalInput({
               {""}
               <blockquote>
                 <img src={convert(rating.rating)} className="ratingStars"></img>
-                {/* {console.log("rating.text is", rating.text)}
-                {console.log("reviews are ", reviews)} */}
 
                 <br />
                 {rating.text}
@@ -145,6 +139,7 @@ function ModalInput({
         {buttonBottom === true && (
           <div className="addReview">
             <form id="inputForm">
+
               <label for="rRating" className="labelReviewText">
                 &nbsp;&nbsp; Rating:
               </label>
@@ -156,20 +151,22 @@ function ModalInput({
                   <li>
                     <input
                       type="radio"
+                      checked={newRating === "1"}
                       id="1"
                       name="userRating"
                       value={1}
-        //              onChange={(e) => submitNewUserRating(e.target.value)}
+                      onChange={(e) => setNewRating(e.target.value)}
                     />
                       <label for="one">1</label>
                   </li>{" "}
                   <li>
                     <input
                       type="radio"
+                      checked={newRating === "2"}
                       id="2"
                       name="userRating"
                       value={2}
-        //              onChange={(e) => submitNewUserRating(e.target.value)}
+                      onChange={(e) => setNewRating(e.target.value)}
                     />
                       <label for="two">2</label>
                   </li>
@@ -178,10 +175,11 @@ function ModalInput({
                     {" "}
                     <input
                       type="radio"
+                      checked={newRating === "3"}
                       id="3"
                       name="userRating"
                       value={3}
-        //              onChange={(e) => submitNewUserRating(e.target.value)}
+                      onChange={(e) => setNewRating(e.target.value)}
                     />
                       <label for="three">3</label>
                   </li>
@@ -190,10 +188,11 @@ function ModalInput({
                     {" "}
                     <input
                       type="radio"
+                      checked={newRating === "4"}
                       id="4"
                       name="userRating"
                       value={4}
-        //              onChange={(e) => submitNewUserRating(e.target.value)}
+                      onChange={(e) => setNewRating(e.target.value)}
                     />
                       <label for="four">4</label>
                   </li>
@@ -201,15 +200,17 @@ function ModalInput({
                     {" "}
                     <input
                       type="radio"
+                      checked={newRating === "5"}
                       id="5"
                       name="userRating"
                       value={5}
-        //              onChange={(e) => submitNewUserRating(e.target.value)}
+                      onChange={(e) => setNewRating(e.target.value)}
                     />
-                      <label for="one">5</label>
+                      <label for="five">5</label>
                   </li>
                 </ul>
               </div>
+
               <label for="rAddress" className="labelReviewText">
                 &nbsp;&nbsp; Review:
                 <br />
@@ -233,10 +234,12 @@ function ModalInput({
                   type="button"
                   className="reviewSubmitButton"
                   value="Submit"
-                  onClick={() => submitNewReviewRating(
-                    newUserReview
-                    //, submitNewUserRating
-                    )}
+                  onClick={() =>
+                    submitNewReviewRating(
+                      newUserReview,
+                      newRating
+                    )
+                  }
                 />
               }
             </form>

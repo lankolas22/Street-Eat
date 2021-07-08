@@ -28,6 +28,9 @@ function App() {
               text: review,
             },
           ];
+          if (selectedRestaurant.ratings[0].ratingID === null ) {
+            r.ratings.shift();
+          }
         } else {
           r.reviews = [
             ...r.reviews,
@@ -38,9 +41,8 @@ function App() {
             },
           ];
         }
-        if (selectedRestaurant.ratings[0].ratingID === null && selectedRestaurant.restaurantType === "dummy") {
-          r.ratings.shift();
-        }
+
+
       }
 
       return r;

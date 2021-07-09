@@ -12,9 +12,7 @@ let latLngImage;
 function ModalInput({
   selectedRestaurant,
   setSelectedRestaurant,
-  reviews,
-  addNewRatingReview,
-  addReviewToRestaurant,
+  addReviewToRestaurant
 
 }) {
 
@@ -22,7 +20,6 @@ function ModalInput({
   const [newRating, setNewRating] = useState(null);
   const [buttonTop, setButtonTop] = useState(true);
   const [buttonBottom, setButtonBottom] = useState(null);
-
 
   const restaurantReviews =
     selectedRestaurant.restaurantType === "dummy"
@@ -54,10 +51,6 @@ function ModalInput({
     } else {
       return unrated;
     }
-  }
-
-  function addNewRatingReview(newUserRatingReview) {
-    console.log(newUserRatingReview);
   }
 
   function expandInput() {

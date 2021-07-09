@@ -9,7 +9,6 @@ function Side({ restaurants, setSelectedRestaurant, setButtonBottom, setButtonTo
   let fourPlusArr = [];
   let filteredRestaurants = restaurants;
 
-
   if (filterValue === "fourPlus") {
     fourPlusArr = [];
     for (let i = 0; i < restaurants.length; i++) {
@@ -44,14 +43,11 @@ function Side({ restaurants, setSelectedRestaurant, setButtonBottom, setButtonTo
         {/*live data*/}
         {filteredRestaurants.map((restaurants) => {
           return (
-            // props
             <RestaurantItem
               restaurant={restaurants}
               setSelectedRestaurant={setSelectedRestaurant}
               setButtonBottom={setButtonBottom}
               setButtonTop={setButtonTop}
-
-              //
             />
           );
         })}

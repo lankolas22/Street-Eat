@@ -17,14 +17,11 @@ function ModalInput({
   addReviewToRestaurant,
 
 }) {
-  // const [newUserRating, setNewUserRating] = useState(null);
+
   const [newUserReview, setNewUserReview] = useState("");
   const [newRating, setNewRating] = useState(null);
   const [buttonTop, setButtonTop] = useState(true);
   const [buttonBottom, setButtonBottom] = useState(null);
-
-  
-  // const restaurantReviews = selectedRestaurant.reviews;
 
 
   const restaurantReviews =
@@ -38,9 +35,7 @@ function ModalInput({
 
     latLngImage = `https://maps.googleapis.com/maps/api/streetview?location=${imgLat},${imgLng}&size=600x400&key=AIzaSyAl7rJskwTxg3fIJ3wKhN_KT0emk1LlcI0`;
   }
-  // function onReviewAdded(rating, review) {
-  // addReviewToRestaurant(selectedRestaurant.place_id, rating, review)
-  // }
+
   function convert(num) {
     if (num < 1.5 && num > 0) {
       return one;

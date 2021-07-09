@@ -54,7 +54,6 @@ function MapContainer({
   ///////////////////////////////////////////////
   function callback(results) {
     setRestaurants(results);
-   // console.log("RESULTS ARE", results);
   }
 
   function getLocation() {
@@ -93,8 +92,6 @@ function MapContainer({
       return placeID;
     }
 
-    
-
     let newRestaurant = {
       name: name,
       place_id: placeIDGenerator(name),
@@ -124,8 +121,6 @@ function MapContainer({
           setSelectedRestaurant={setSelectedRestaurant}
           addReviewToRestaurant={addReviewToRestaurant}
           map={mapState}
-          // setButtonBottom={setButtonBottom}
-          // setButtonTop={setButtonTop}
         />
       )}
       {addRestaurantModal && (
